@@ -1,0 +1,1377 @@
+{
+  "Actions": {
+    "AddReference": {
+      "RefreshQueryOnCompleted": true,
+      "Offset": 300,
+      "ShowedOn": 2,
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Add"
+      },
+      "IconName": "Add"
+    },
+    "BulkEdit": {
+      "Offset": 400,
+      "ShowedOn": 2,
+      "IsSystem": true,
+      "SelectionRule": ">0",
+      "DisplayName": {
+        "en": "Edit"
+      },
+      "IconName": "Edit"
+    },
+    "CancelEdit": {
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Cancel"
+      },
+      "IconName": "CancelEdit"
+    },
+    "CancelSave": {
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Cancel"
+      },
+      "IconName": "Cancel"
+    },
+    "Delete": {
+      "RefreshQueryOnCompleted": true,
+      "Offset": 500,
+      "ShowedOn": 2,
+      "IsSystem": true,
+      "SelectionRule": ">0",
+      "DisplayName": {
+        "en": "Delete"
+      },
+      "ConfirmationMessageKey": "AskForDeleteItems",
+      "IconName": "Delete"
+    },
+    "DialogCancel": {
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Cancel"
+      },
+      "IconName": "Cancel"
+    },
+    "DialogOk": {
+      "IsSystem": true,
+      "SelectionRule": "> 0",
+      "DisplayName": {
+        "en": "OK"
+      },
+      "IconName": "Ok"
+    },
+    "Edit": {
+      "Offset": 100,
+      "ShowedOn": 5,
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Edit"
+      },
+      "IconName": "Edit"
+    },
+    "EndEdit": {
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Save"
+      },
+      "IconName": "Save"
+    },
+    "ExportToCsv": {
+      "Offset": 30001,
+      "ShowedOn": 2,
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Export"
+      },
+      "IconName": "Excel"
+    },
+    "ExportToExcel": {
+      "Offset": 30000,
+      "ShowedOn": 2,
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Export"
+      },
+      "IconName": "Excel"
+    },
+    "New": {
+      "Offset": 200,
+      "ShowedOn": 2,
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "New"
+      },
+      "IconName": "Add"
+    },
+    "Remove": {
+      "RefreshQueryOnCompleted": true,
+      "Offset": 600,
+      "ShowedOn": 2,
+      "IsSystem": true,
+      "SelectionRule": ">0",
+      "DisplayName": {
+        "en": "Remove"
+      },
+      "IconName": "Remove"
+    },
+    "Save": {
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Save"
+      },
+      "IconName": "Save"
+    },
+    "ShowHelp": {
+      "Offset": 60000,
+      "ShowedOn": 7,
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Help"
+      },
+      "IsPinned": true,
+      "IconName": "Help"
+    },
+    "Sync": {
+      "ShowedOn": 2,
+      "DisplayName": {
+        "en": "Sync"
+      }
+    },
+    "viLoadAdvancedSearch": {
+      "Offset": 1600,
+      "ShowedOn": 2,
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Load"
+      },
+      "IconName": "Add"
+    },
+    "viSaveAdvancedSearch": {
+      "Offset": 1600,
+      "ShowedOn": 2,
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Save"
+      },
+      "IconName": "Save"
+    },
+    "viSearch": {
+      "Offset": 1500,
+      "ShowedOn": 2,
+      "IsSystem": true,
+      "DisplayName": {
+        "en": "Search"
+      },
+      "IsPinned": true,
+      "IconName": "Filter"
+    }
+  },
+  "DataTypes": {
+    "AsDetail": {
+      "$id": "DataType:AsDetail",
+      "IsSystem": true,
+      "CanSort": false,
+      "CanFilter": false,
+      "CanListDistincts": false
+    },
+    "BinaryFile": {
+      "$id": "DataType:BinaryFile",
+      "IsSystem": true,
+      "CanSort": false,
+      "CanFilter": false,
+      "CanListDistincts": false
+    },
+    "Boolean": {
+      "$id": "DataType:Boolean",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Byte": {
+      "$id": "DataType:Byte",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "ComboBox": {
+      "$id": "DataType:ComboBox",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "CommonMark": {
+      "$id": "DataType:CommonMark",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Date": {
+      "$id": "DataType:Date",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "DateTime": {
+      "$id": "DataType:DateTime",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "DateTimeOffset": {
+      "$id": "DataType:DateTimeOffset",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Decimal": {
+      "$id": "DataType:Decimal",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Double": {
+      "$id": "DataType:Double",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "DropDown": {
+      "$id": "DataType:DropDown",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Enum": {
+      "$id": "DataType:Enum",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "FlagsEnum": {
+      "$id": "DataType:FlagsEnum",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Geography": {
+      "$id": "DataType:Geography",
+      "IsSystem": true,
+      "CanSort": false,
+      "CanFilter": true,
+      "CanListDistincts": false
+    },
+    "Guid": {
+      "$id": "DataType:Guid",
+      "IsSystem": true,
+      "CanSort": false,
+      "CanFilter": false,
+      "CanListDistincts": false
+    },
+    "Image": {
+      "$id": "DataType:Image",
+      "IsSystem": true,
+      "CanSort": false,
+      "CanFilter": false,
+      "CanListDistincts": false
+    },
+    "Int16": {
+      "$id": "DataType:Int16",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Int32": {
+      "$id": "DataType:Int32",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Int64": {
+      "$id": "DataType:Int64",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "KeyValueList": {
+      "$id": "DataType:KeyValueList",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "MultiLineString": {
+      "$id": "DataType:MultiLineString",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "MultiString": {
+      "$id": "DataType:MultiString",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableBoolean": {
+      "$id": "DataType:NullableBoolean",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableByte": {
+      "$id": "DataType:NullableByte",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableDate": {
+      "$id": "DataType:NullableDate",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableDateTime": {
+      "$id": "DataType:NullableDateTime",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableDateTimeOffset": {
+      "$id": "DataType:NullableDateTimeOffset",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableDecimal": {
+      "$id": "DataType:NullableDecimal",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableDouble": {
+      "$id": "DataType:NullableDouble",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableGuid": {
+      "$id": "DataType:NullableGuid",
+      "IsSystem": true,
+      "CanSort": false,
+      "CanFilter": false,
+      "CanListDistincts": false
+    },
+    "NullableInt16": {
+      "$id": "DataType:NullableInt16",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableInt32": {
+      "$id": "DataType:NullableInt32",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableInt64": {
+      "$id": "DataType:NullableInt64",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableSByte": {
+      "$id": "DataType:NullableSByte",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableSingle": {
+      "$id": "DataType:NullableSingle",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableTime": {
+      "$id": "DataType:NullableTime",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableUInt16": {
+      "$id": "DataType:NullableUInt16",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableUInt32": {
+      "$id": "DataType:NullableUInt32",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableUInt64": {
+      "$id": "DataType:NullableUInt64",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "NullableUser": {
+      "$id": "DataType:NullableUser",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Password": {
+      "$id": "DataType:Password",
+      "IsSystem": true,
+      "CanSort": false,
+      "CanFilter": false,
+      "CanListDistincts": false
+    },
+    "Reference": {
+      "$id": "DataType:Reference",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "SByte": {
+      "$id": "DataType:SByte",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Single": {
+      "$id": "DataType:Single",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": false,
+      "CanListDistincts": true
+    },
+    "String": {
+      "$id": "DataType:String",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "Time": {
+      "$id": "DataType:Time",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "TranslatedString": {
+      "$id": "DataType:TranslatedString",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "UInt16": {
+      "$id": "DataType:UInt16",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "UInt32": {
+      "$id": "DataType:UInt32",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "UInt64": {
+      "$id": "DataType:UInt64",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "User": {
+      "$id": "DataType:User",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    },
+    "YesNo": {
+      "$id": "DataType:YesNo",
+      "IsSystem": true,
+      "CanSort": true,
+      "CanFilter": true,
+      "CanListDistincts": true
+    }
+  },
+  "Schemas": {
+    "RockStats": {
+      "PersistentObjects": {
+        "baf5015c-551a-3583-9b8c-a0050f088790": {
+          "$id": "PersistentObject:baf5015c-551a-3583-9b8c-a0050f088790",
+          "SchemaName": "RockStats",
+          "Type": "Account",
+          "Salt": "7vCRUYoqKGlZ7mnu-JEvCm4YqB9A0wueJP9d7r3Qzpw6GvzPTOmhyg",
+          "Breadcrumb": "{Owner}",
+          "ContextProperty": "Accounts",
+          "Label": {
+            "en": "Account"
+          },
+          "Groups": [
+            {
+              "$id": "PersistentObjectAttributeGroup:484f83a4-ad7f-4328-8ea8-002d196e0e03",
+              "Id": "484f83a4-ad7f-4328-8ea8-002d196e0e03"
+            }
+          ],
+          "Tabs": [
+            {
+              "$id": "PersistentObjectAttributeTab:12510f70-6c1a-4ae6-88c1-a98eb90134a8",
+              "Id": "12510f70-6c1a-4ae6-88c1-a98eb90134a8"
+            }
+          ],
+          "Attributes": [
+            {
+              "$id": "PersistentObjectAttribute:912748b0-c759-34f6-83a9-ba8a2f019142",
+              "Id": "912748b0-c759-34f6-83a9-ba8a2f019142",
+              "Offset": 40,
+              "Name": "Address",
+              "Label": {
+                "en": "Address"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:484f83a4-ad7f-4328-8ea8-002d196e0e03"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:12510f70-6c1a-4ae6-88c1-a98eb90134a8"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:4bc8dc23-90db-31d8-bf89-5f321ebe4912",
+              "Id": "4bc8dc23-90db-31d8-bf89-5f321ebe4912",
+              "Offset": 20,
+              "Name": "Avatar",
+              "Label": {
+                "en": "Avatar"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:484f83a4-ad7f-4328-8ea8-002d196e0e03"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:12510f70-6c1a-4ae6-88c1-a98eb90134a8"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:28b6885f-48b5-3d99-b15e-7aed3ce8ba19",
+              "Id": "28b6885f-48b5-3d99-b15e-7aed3ce8ba19",
+              "Offset": 60,
+              "Name": "Flairs",
+              "Label": {
+                "en": "Flairs"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:484f83a4-ad7f-4328-8ea8-002d196e0e03"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:12510f70-6c1a-4ae6-88c1-a98eb90134a8"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:16a1f0e0-ae2e-308b-9141-496dbfce4e36",
+              "Id": "16a1f0e0-ae2e-308b-9141-496dbfce4e36",
+              "Offset": 50,
+              "Name": "Moderator",
+              "Label": {
+                "en": "Moderator"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:NullableBoolean"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:484f83a4-ad7f-4328-8ea8-002d196e0e03"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:12510f70-6c1a-4ae6-88c1-a98eb90134a8"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:8e600651-df9e-38d0-a8a5-ef5d1d4684ae",
+              "Id": "8e600651-df9e-38d0-a8a5-ef5d1d4684ae",
+              "Offset": 10,
+              "Name": "Owner",
+              "Label": {
+                "en": "Owner"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:484f83a4-ad7f-4328-8ea8-002d196e0e03"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:12510f70-6c1a-4ae6-88c1-a98eb90134a8"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:d106d300-07b3-372d-963d-269d7965fa0a",
+              "Id": "d106d300-07b3-372d-963d-269d7965fa0a",
+              "Offset": 30,
+              "Name": "OwnerId",
+              "Label": {
+                "en": "Owner id"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:484f83a4-ad7f-4328-8ea8-002d196e0e03"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:12510f70-6c1a-4ae6-88c1-a98eb90134a8"
+              }
+            }
+          ],
+          "Queries": []
+        },
+        "c1db876a-20a7-37b0-8281-6d08a8528bd7": {
+          "$id": "PersistentObject:c1db876a-20a7-37b0-8281-6d08a8528bd7",
+          "SchemaName": "RockStats",
+          "Type": "Block",
+          "Salt": "e8N6dKRZ6am-UY2dA0eZ0KNxz6Y-vWZE5qHrpt1vNJcqNJd5sVYpnQ",
+          "Breadcrumb": "{Id}",
+          "ContextProperty": "Blocks",
+          "Label": {
+            "en": "Block"
+          },
+          "Groups": [
+            {
+              "$id": "PersistentObjectAttributeGroup:b039a14a-023e-4561-ad3b-d502af80e3ff",
+              "Id": "b039a14a-023e-4561-ad3b-d502af80e3ff"
+            }
+          ],
+          "Tabs": [
+            {
+              "$id": "PersistentObjectAttributeTab:63ff4b65-3075-4fa5-a3da-c217fd3b49bd",
+              "Id": "63ff4b65-3075-4fa5-a3da-c217fd3b49bd"
+            }
+          ],
+          "Attributes": [
+            {
+              "$id": "PersistentObjectAttribute:e581a21d-1150-3fd2-900b-0a983afaa43b",
+              "Id": "e581a21d-1150-3fd2-900b-0a983afaa43b",
+              "Offset": 10,
+              "Name": "Id",
+              "Label": {
+                "en": "Id"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:b039a14a-023e-4561-ad3b-d502af80e3ff"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:63ff4b65-3075-4fa5-a3da-c217fd3b49bd"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:bf9131ba-5341-3f3a-9a8c-866e024ad5ae",
+              "Id": "bf9131ba-5341-3f3a-9a8c-866e024ad5ae",
+              "Offset": 20,
+              "Rules": "Required",
+              "Name": "Number",
+              "Label": {
+                "en": "Number"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:Int64"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:b039a14a-023e-4561-ad3b-d502af80e3ff"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:63ff4b65-3075-4fa5-a3da-c217fd3b49bd"
+              }
+            }
+          ],
+          "Queries": []
+        },
+        "bcdc0732-c313-3787-8b3b-e7deebde7846": {
+          "$id": "PersistentObject:bcdc0732-c313-3787-8b3b-e7deebde7846",
+          "SchemaName": "RockStats",
+          "Type": "Job",
+          "Salt": "7v9yGD3zs7hpbRRNeDmwFH9wR1hjJN8vIqZjpKSoZ7J0pcm_80QAfg",
+          "Breadcrumb": "{Name}",
+          "ContextProperty": "Jobs",
+          "Label": {
+            "en": "Job"
+          },
+          "Groups": [
+            {
+              "$id": "PersistentObjectAttributeGroup:0c04aa4a-76f7-4667-b719-3052fd497d72",
+              "Id": "0c04aa4a-76f7-4667-b719-3052fd497d72"
+            }
+          ],
+          "Tabs": [
+            {
+              "$id": "PersistentObjectAttributeTab:bce80df5-1a0d-4fcb-945d-98242f5a717e",
+              "Id": "bce80df5-1a0d-4fcb-945d-98242f5a717e"
+            }
+          ],
+          "Attributes": [
+            {
+              "$id": "PersistentObjectAttribute:bd1c09d6-f392-35ae-bfbb-b1b5e32628f5",
+              "Id": "bd1c09d6-f392-35ae-bfbb-b1b5e32628f5",
+              "Offset": 10,
+              "Rules": "NotEmpty; MaxLength(255)",
+              "Name": "Name",
+              "Label": {
+                "en": "Name"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:0c04aa4a-76f7-4667-b719-3052fd497d72"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:bce80df5-1a0d-4fcb-945d-98242f5a717e"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttributeAsDetail:59bc8e39-323b-3781-b580-7ddf45340a83",
+              "$type": "Vidyano.Service.Repository.PersistentObjectAttributeAsDetail, Vidyano.Service",
+              "DetailsId": "be3da5b9-a2e0-4334-b231-49fe668580a2",
+              "Id": "59bc8e39-323b-3781-b580-7ddf45340a83",
+              "Offset": 40,
+              "Name": "Parameters",
+              "CanSort": false,
+              "CanFilter": false,
+              "CanListDistincts": false,
+              "DataTypeHints": "IncludeHeader=True",
+              "Label": {
+                "en": "Parameters"
+              },
+              "Visibility": 5,
+              "ColumnSpan": 4,
+              "DataType": {
+                "$ref": "DataType:AsDetail"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:0c04aa4a-76f7-4667-b719-3052fd497d72"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:bce80df5-1a0d-4fcb-945d-98242f5a717e"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:22348fa8-abde-3272-95af-8c26121662a9",
+              "Id": "22348fa8-abde-3272-95af-8c26121662a9",
+              "Offset": 30,
+              "Rules": "Required",
+              "Name": "RefreshTimeInSeconds",
+              "Label": {
+                "en": "Refresh time in seconds"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:Int32"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:0c04aa4a-76f7-4667-b719-3052fd497d72"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:bce80df5-1a0d-4fcb-945d-98242f5a717e"
+              }
+            }
+          ],
+          "Queries": [
+            "be3da5b9-a2e0-4334-b231-49fe668580a2"
+          ]
+        },
+        "8321ae99-d1a3-375b-8979-f50a786da21b": {
+          "$id": "PersistentObject:8321ae99-d1a3-375b-8979-f50a786da21b",
+          "SchemaName": "RockStats",
+          "Type": "JobParameter",
+          "Salt": "0SBm9y1_7nF-uYpehru4QWAckCjwr32U_UWLxWeVgd2XJ7_cdJ3CwA",
+          "Breadcrumb": "{Name}",
+          "Label": {
+            "en": "Job parameter"
+          },
+          "Groups": [
+            {
+              "$id": "PersistentObjectAttributeGroup:43ce96a8-1675-439b-a264-bb5032fb6321",
+              "Id": "43ce96a8-1675-439b-a264-bb5032fb6321"
+            }
+          ],
+          "Tabs": [
+            {
+              "$id": "PersistentObjectAttributeTab:1413eb83-ea1a-4ec6-9148-3f989b47afa2",
+              "Id": "1413eb83-ea1a-4ec6-9148-3f989b47afa2"
+            }
+          ],
+          "Attributes": [
+            {
+              "$id": "PersistentObjectAttribute:feab0ed3-7259-37cd-a174-4ac906b996ae",
+              "Id": "feab0ed3-7259-37cd-a174-4ac906b996ae",
+              "Offset": 10,
+              "Rules": "MaxLength(255); NotEmpty",
+              "Name": "Name",
+              "Label": {
+                "en": "Name"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:43ce96a8-1675-439b-a264-bb5032fb6321"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:1413eb83-ea1a-4ec6-9148-3f989b47afa2"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:0767c18e-f2b3-3e32-949e-5f73a6a485ce",
+              "Id": "0767c18e-f2b3-3e32-949e-5f73a6a485ce",
+              "Offset": 20,
+              "Name": "Value",
+              "Label": {
+                "en": "Value"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:43ce96a8-1675-439b-a264-bb5032fb6321"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:1413eb83-ea1a-4ec6-9148-3f989b47afa2"
+              }
+            }
+          ],
+          "Queries": []
+        },
+        "7c147ceb-1741-3fe4-aee4-1c3a449ba6a1": {
+          "$id": "PersistentObject:7c147ceb-1741-3fe4-aee4-1c3a449ba6a1",
+          "SchemaName": "RockStats",
+          "Type": "Transaction",
+          "Salt": "RA7CrcCci9suaDJXvqf8Qbs0PCdm9vhgqXf52kqdQFR2ZxTky_a4pg",
+          "Breadcrumb": "{Amount}",
+          "ContextProperty": "BlockTransactions",
+          "Label": {
+            "en": "Transaction"
+          },
+          "Groups": [
+            {
+              "$id": "PersistentObjectAttributeGroup:078d54ed-563a-4a7b-abcc-31363973a588",
+              "Id": "078d54ed-563a-4a7b-abcc-31363973a588"
+            }
+          ],
+          "Tabs": [
+            {
+              "$id": "PersistentObjectAttributeTab:2823b472-8146-4409-8538-dc665a9d050a",
+              "Id": "2823b472-8146-4409-8538-dc665a9d050a"
+            }
+          ],
+          "Attributes": [
+            {
+              "$id": "PersistentObjectAttribute:1973ef64-6edc-3da9-9b93-3cd672c4e535",
+              "Id": "1973ef64-6edc-3da9-9b93-3cd672c4e535",
+              "Offset": 10,
+              "Rules": "Required",
+              "Name": "Amount",
+              "Label": {
+                "en": "Amount"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:078d54ed-563a-4a7b-abcc-31363973a588"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:2823b472-8146-4409-8538-dc665a9d050a"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttributeWithReference:f299a118-6197-3288-bc6c-ec6be2e330ac",
+              "$type": "Vidyano.Service.Repository.PersistentObjectAttributeWithReference, Vidyano.Service",
+              "DisplayAttribute": "Id",
+              "LookupId": "3cc54421-04ac-4bf6-a178-8872a180cb05",
+              "Id": "f299a118-6197-3288-bc6c-ec6be2e330ac",
+              "Offset": 20,
+              "Name": "Block",
+              "Label": {
+                "en": "Block"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:Reference"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:078d54ed-563a-4a7b-abcc-31363973a588"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:2823b472-8146-4409-8538-dc665a9d050a"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttributeWithReference:3138c302-a3ec-3fe3-a7a8-a8c5ad72b97d",
+              "$type": "Vidyano.Service.Repository.PersistentObjectAttributeWithReference, Vidyano.Service",
+              "DisplayAttribute": "Address",
+              "LookupId": "dbf9897f-b3e0-46d2-8cb3-454495992555",
+              "Id": "3138c302-a3ec-3fe3-a7a8-a8c5ad72b97d",
+              "Offset": 40,
+              "Name": "Receiver",
+              "Label": {
+                "en": "Receiver"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:Reference"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:078d54ed-563a-4a7b-abcc-31363973a588"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:2823b472-8146-4409-8538-dc665a9d050a"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttributeWithReference:5d043691-5c16-3ec2-8ff0-18b987096e62",
+              "$type": "Vidyano.Service.Repository.PersistentObjectAttributeWithReference, Vidyano.Service",
+              "DisplayAttribute": "Address",
+              "LookupId": "dbf9897f-b3e0-46d2-8cb3-454495992555",
+              "Id": "5d043691-5c16-3ec2-8ff0-18b987096e62",
+              "Offset": 30,
+              "Name": "Sender",
+              "Label": {
+                "en": "Sender"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:Reference"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:078d54ed-563a-4a7b-abcc-31363973a588"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:2823b472-8146-4409-8538-dc665a9d050a"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:cc45c922-e088-3c90-858e-cf9f066557f7",
+              "Id": "cc45c922-e088-3c90-858e-cf9f066557f7",
+              "Offset": 50,
+              "Rules": "Required",
+              "Name": "Timestamp",
+              "Label": {
+                "en": "Timestamp"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:DateTime"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:078d54ed-563a-4a7b-abcc-31363973a588"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:2823b472-8146-4409-8538-dc665a9d050a"
+              }
+            }
+          ],
+          "Queries": []
+        },
+        "00cd0e5e-67f9-3b9b-ba46-52d0a46db8ce": {
+          "$id": "PersistentObject:00cd0e5e-67f9-3b9b-ba46-52d0a46db8ce",
+          "SchemaName": "RockStats",
+          "Type": "VAccount",
+          "Salt": "K-BgFAaeuocu56YZbkKLKxUJqzrVzgm45MGZgqlQR7aF4SyhO9Kh_w",
+          "Breadcrumb": "{Name}",
+          "ContextProperty": "VAccounts",
+          "SortOptions": "Balance DESC",
+          "Label": {
+            "en": "Account"
+          },
+          "Groups": [
+            {
+              "$id": "PersistentObjectAttributeGroup:cb4626e0-3340-4aba-a901-569427a06c13",
+              "Id": "cb4626e0-3340-4aba-a901-569427a06c13"
+            }
+          ],
+          "Tabs": [
+            {
+              "$id": "PersistentObjectAttributeTab:4f994b40-ee03-457b-aab8-7d5206c1c6c6",
+              "Id": "4f994b40-ee03-457b-aab8-7d5206c1c6c6"
+            }
+          ],
+          "Attributes": [
+            {
+              "$id": "PersistentObjectAttribute:3d40b846-54ed-31b4-ba17-a31f2d0f6f35",
+              "Id": "3d40b846-54ed-31b4-ba17-a31f2d0f6f35",
+              "Offset": 40,
+              "Name": "Address",
+              "Label": {
+                "en": "Address"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:cb4626e0-3340-4aba-a901-569427a06c13"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:4f994b40-ee03-457b-aab8-7d5206c1c6c6"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:8166d3b0-da7a-311c-9e63-7c7236e9c247",
+              "Id": "8166d3b0-da7a-311c-9e63-7c7236e9c247",
+              "Offset": 15,
+              "Name": "Avatar",
+              "Label": {
+                "en": "Avatar"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:cb4626e0-3340-4aba-a901-569427a06c13"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:4f994b40-ee03-457b-aab8-7d5206c1c6c6"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:24662c95-f035-3b47-ad97-6cf3ca4b988d",
+              "Id": "24662c95-f035-3b47-ad97-6cf3ca4b988d",
+              "Offset": 20,
+              "Rules": "Required",
+              "Name": "Balance",
+              "Label": {
+                "en": "Balance"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:Decimal"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:cb4626e0-3340-4aba-a901-569427a06c13"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:4f994b40-ee03-457b-aab8-7d5206c1c6c6"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:0d1cd8b5-3fcf-33ca-ab90-ebc265ea2d5d",
+              "Id": "0d1cd8b5-3fcf-33ca-ab90-ebc265ea2d5d",
+              "Offset": 60,
+              "Name": "Flairs",
+              "Label": {
+                "en": "Flairs"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:cb4626e0-3340-4aba-a901-569427a06c13"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:4f994b40-ee03-457b-aab8-7d5206c1c6c6"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:14c23eba-c2ab-32c3-9707-0a3344e02cd4",
+              "Id": "14c23eba-c2ab-32c3-9707-0a3344e02cd4",
+              "Offset": 50,
+              "Rules": "Required",
+              "Name": "Moderator",
+              "Label": {
+                "en": "Moderator"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:Boolean"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:cb4626e0-3340-4aba-a901-569427a06c13"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:4f994b40-ee03-457b-aab8-7d5206c1c6c6"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:70e1561f-82f5-3590-bd4d-eb88ba25415f",
+              "Id": "70e1561f-82f5-3590-bd4d-eb88ba25415f",
+              "Offset": 12,
+              "Name": "Redditor",
+              "Label": {
+                "en": "Redditor"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:cb4626e0-3340-4aba-a901-569427a06c13"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:4f994b40-ee03-457b-aab8-7d5206c1c6c6"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:9c6255d0-5c15-3de9-9109-9ca796225730",
+              "Id": "9c6255d0-5c15-3de9-9109-9ca796225730",
+              "Offset": 30,
+              "Rules": "Required",
+              "Name": "Sent",
+              "Label": {
+                "en": "Sent"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:Decimal"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:cb4626e0-3340-4aba-a901-569427a06c13"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:4f994b40-ee03-457b-aab8-7d5206c1c6c6"
+              }
+            }
+          ],
+          "Queries": []
+        }
+      },
+      "Queries": {
+        "2739d6b8-5c14-4c27-9f04-19bf6cdbaf5a": {
+          "$id": "Query:2739d6b8-5c14-4c27-9f04-19bf6cdbaf5a",
+          "Source": "Database.VAccounts",
+          "AutoQuery": true,
+          "PageSize": 0,
+          "Name": "VAccounts",
+          "Label": {
+            "en": "Accounts"
+          },
+          "PersistentObject": {
+            "$ref": "PersistentObject:00cd0e5e-67f9-3b9b-ba46-52d0a46db8ce"
+          },
+          "Columns": []
+        },
+        "3cc54421-04ac-4bf6-a178-8872a180cb05": {
+          "$id": "Query:3cc54421-04ac-4bf6-a178-8872a180cb05",
+          "Source": "Database.Blocks",
+          "AutoQuery": true,
+          "Name": "Blocks",
+          "Label": {
+            "en": "Blocks"
+          },
+          "PersistentObject": {
+            "$ref": "PersistentObject:c1db876a-20a7-37b0-8281-6d08a8528bd7"
+          },
+          "Columns": []
+        },
+        "814990b0-19bd-410b-8931-787da4bff542": {
+          "$id": "Query:814990b0-19bd-410b-8931-787da4bff542",
+          "Source": "Database.BlockTransactions",
+          "AutoQuery": true,
+          "Name": "BlockTransactions",
+          "Label": {
+            "en": "Block transactions"
+          },
+          "PersistentObject": {
+            "$ref": "PersistentObject:7c147ceb-1741-3fe4-aee4-1c3a449ba6a1"
+          },
+          "Columns": []
+        },
+        "89c3ee26-cc27-4536-90c8-7acfb2209644": {
+          "$id": "Query:89c3ee26-cc27-4536-90c8-7acfb2209644",
+          "Source": "Database.Jobs",
+          "AutoQuery": true,
+          "Name": "Jobs",
+          "Label": {
+            "en": "Jobs"
+          },
+          "PersistentObject": {
+            "$ref": "PersistentObject:bcdc0732-c313-3787-8b3b-e7deebde7846"
+          },
+          "Columns": []
+        },
+        "be3da5b9-a2e0-4334-b231-49fe668580a2": {
+          "$id": "Query:be3da5b9-a2e0-4334-b231-49fe668580a2",
+          "Source": "Parameters",
+          "AutoQuery": true,
+          "Name": "Parameters",
+          "Label": {
+            "en": "Parameters"
+          },
+          "PersistentObject": {
+            "$ref": "PersistentObject:8321ae99-d1a3-375b-8979-f50a786da21b"
+          },
+          "Columns": []
+        },
+        "dbf9897f-b3e0-46d2-8cb3-454495992555": {
+          "$id": "Query:dbf9897f-b3e0-46d2-8cb3-454495992555",
+          "Source": "Database.Accounts",
+          "AutoQuery": true,
+          "Name": "AccountsReddit",
+          "Label": {
+            "en": "Accounts Reddit"
+          },
+          "PersistentObject": {
+            "$ref": "PersistentObject:baf5015c-551a-3583-9b8c-a0050f088790"
+          },
+          "Columns": []
+        }
+      }
+    }
+  },
+  "ProgramUnits": [
+    {
+      "Name": "Home",
+      "Title": {
+        "en": "Home"
+      },
+      "Groups": [],
+      "Items": [
+        {
+          "Offset": 40,
+          "Title": {
+            "en": "Accounts"
+          },
+          "Name": "Accounts",
+          "Query": {
+            "$ref": "Query:dbf9897f-b3e0-46d2-8cb3-454495992555"
+          }
+        },
+        {
+          "Offset": 50,
+          "Title": {
+            "en": "Blocks"
+          },
+          "Name": "Blocks",
+          "Query": {
+            "$ref": "Query:3cc54421-04ac-4bf6-a178-8872a180cb05"
+          }
+        },
+        {
+          "Offset": 60,
+          "Title": {
+            "en": "Jobs"
+          },
+          "Name": "Jobs",
+          "Query": {
+            "$ref": "Query:89c3ee26-cc27-4536-90c8-7acfb2209644"
+          }
+        },
+        {
+          "Offset": 55,
+          "Title": {
+            "en": "Block transactions"
+          },
+          "Name": "BlockTransactions",
+          "Query": {
+            "$ref": "Query:814990b0-19bd-410b-8931-787da4bff542"
+          }
+        },
+        {
+          "Offset": 20,
+          "Title": {
+            "en": "V accounts"
+          },
+          "Name": "VAccounts",
+          "Query": {
+            "$ref": "Query:2739d6b8-5c14-4c27-9f04-19bf6cdbaf5a"
+          }
+        }
+      ]
+    }
+  ],
+  "Reports": [],
+  "ServiceVersion": "6.0.20200904.2322-beta1+66ab177",
+  "ModelHash": "46hIly6evkKBiY4Kyby4vqUmcL9QsdPyaPFp7FhUR24=",
+  "SeederHash": "bxZZYsn6O5PkrsGefSeAJvor4/BmrKsVELbZ/J0MQrY="
+}

@@ -1,0 +1,238 @@
+:host {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#EFF1FF));
+  background: linear-gradient(180deg, #FFFFFF 0%, #EFF1FF 100%);
+  position: relative;
+  font-size: 24px;
+  --leader-board-row-height: 48px;
+}
+
+:host main {
+  min-height: 30vh;
+}
+
+:host .wrapper {
+  width: 1000px;
+  max-width: calc(100vw - 24px);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+:host .wrapper.shadow {
+  -webkit-box-shadow: 0px 6px 12px 2px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 6px 12px 2px rgba(0, 0, 0, 0.25);
+}
+
+:host .test {
+  margin-top: 50px;
+  overflow: hidden;
+}
+
+:host header, :host .top {
+  height: 112px;
+  background-color: white;
+}
+
+:host .top {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: white;
+  pointer-events: none;
+}
+
+:host header {
+  position: relative;
+  z-index: 5;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-top: 12px;
+}
+
+:host header h1 {
+  font-size: 100%;
+  margin: 0;
+  line-height: 60px;
+  color: #e43e01;
+}
+
+:host header img {
+  height: 60px;
+}
+
+:host header .sort div {
+  color: #ccc;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 80%;
+}
+
+:host header .sort div[active] {
+  color: #444;
+}
+
+:host header .sort div:first-of-type {
+  margin-right: 12px;
+}
+
+:host main {
+  position: relative;
+  padding-top: 112px;
+}
+
+:host iron-list {
+  margin: 0 12px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:host .account-wrapper {
+  padding: 12px 6px;
+  cursor: pointer;
+  text-decoration: none !important;
+  color: #333 !important;
+}
+
+:host .account-wrapper:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+:host .account {
+  line-height: var(--leader-board-row-height);
+}
+
+:host .account .rank {
+  width: 64px;
+  text-align: center;
+}
+
+:host .account img.avatar {
+  margin-left: 12px;
+  width: var(--leader-board-row-height);
+  height: var(--leader-board-row-height);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+:host .account .who {
+  padding: 0 20px;
+}
+
+:host .account .who span {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+:host .account .who h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+:host .account .flairs {
+  margin-left: 8px;
+}
+
+:host .account .flairs img {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 8px;
+  margin-right: 2px;
+}
+
+:host .account .medal svg {
+  width: 48px;
+  height: 48px;
+}
+
+:host .account .medal:not([hidden]) {
+  width: 64px;
+  height: 48px;
+  text-align: center;
+}
+
+:host .account .medal:not([hidden])[rank="1"] #circle {
+  fill: #e6c300;
+}
+
+:host .account .medal:not([hidden])[rank="2"] #circle {
+  fill: #C0C0C0;
+}
+
+:host .account .medal:not([hidden])[rank="3"] #circle {
+  fill: #CD7F32;
+}
+
+:host header {
+  padding: 0 12px;
+}
+
+:host main {
+  padding-bottom: 48px;
+}
+
+:host footer {
+  text-align: center;
+  line-height: 48px;
+  font-size: 66%;
+}
+
+:host footer a {
+  color: #333 !important;
+  text-decoration: none;
+}
+
+:host-context([is-tablet]) {
+  font-size: 22px;
+}
+
+:host-context([is-phone]) {
+  font-size: 16px;
+}
+
+:host-context([is-phone]) .who {
+  display: block;
+  line-height: 26px;
+}
+
+:host-context([is-phone]) .who span {
+  display: block;
+  font-size: 100%;
+}
+
+:host-context([is-phone]) .who .flairs {
+  margin-left: 0;
+}
+
+:host-context([is-phone]) .who img {
+  display: inline-block;
+  margin-bottom: 0 !important;
+}
+
+:host-context([is-phone]) .balance {
+  font-size: 100%;
+  line-height: 26px;
+}
+
+:host-context([is-phone]) .rank {
+  width: 36px !important;
+}
+
+:host-context([is-phone]) .medal {
+  width: 36px !important;
+}
+
+:host-context([is-phone]) .medal svg {
+  width: 36px !important;
+  height: 36px !important;
+}
+/*# sourceMappingURL=leader-board.css.map */

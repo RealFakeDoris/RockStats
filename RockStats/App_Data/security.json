@@ -1,0 +1,34 @@
+{
+  "Groups": {
+    "fe9429ba-d5cd-4e7c-bbe4-05a4c3497d97": "Administrators",
+    "d3bd3312-0730-43d9-9bf4-9e14c75b00f7": "Users"
+  },
+  "Rights": [
+    {
+      "Id": "31911c1f-b292-492d-a8cb-ed7b6f7d4d15",
+      "Resource": "2739d6b8-5c14-4c27-9f04-19bf6cdbaf5a",
+      "UserId": "85029f44-1c28-4ea9-8e95-8da943f7babf"
+    },
+    {
+      "Id": "46e89588-1b4e-4a8d-95ab-47da3acc3f37",
+      "Resource": "QueryReadEditNewDelete/RockStats",
+      "UserId": "fe9429ba-d5cd-4e7c-bbe4-05a4c3497d97"
+    },
+    {
+      "Id": "61ebfcf5-818c-446e-9a93-d190ea9e02a2",
+      "Resource": "ReadEdit/Vidyano.UserSettings",
+      "IsDenied": true,
+      "UserId": "85029f44-1c28-4ea9-8e95-8da943f7babf"
+    },
+    {
+      "Id": "0dadf712-41a3-4712-90e6-4126084e714b",
+      "Resource": "Sync/RockStats.Account",
+      "UserId": "07b59ace-35e7-4bc8-8034-241f2b09e238"
+    },
+    {
+      "Id": "348499bc-c4ec-45c9-8f00-649b49e29fbc",
+      "Resource": "Sync/RockStats.Block",
+      "UserId": "07b59ace-35e7-4bc8-8034-241f2b09e238"
+    }
+  ]
+}

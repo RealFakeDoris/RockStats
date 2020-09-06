@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+      "target": "es5",
+      "lib": [
+        "dom",
+        "es2015"
+      ],
+      "removeComments": true,
+      "emitBOM": false,
+      "noEmitOnError": false,
+      "noEmitHelpers": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": false,
+      "alwaysStrict": true,
+      "sourceMap": false
+    },
+    "compileOnSave": true,
+    "files": [
+      "Scripts/typings/vidyano/vidyano.d.ts",
+      "wwwroot/WebComponents/LeaderBoard/leader-board.ts"
+    ]
+  }
