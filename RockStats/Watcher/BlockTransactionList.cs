@@ -38,11 +38,19 @@ namespace RockStats.Watcher
 
     public class BlockTransaction
     {
+        [JsonProperty("txindex")]
+        public int Index { get; set; }
+
+        [JsonProperty("txhash")]
+        public string Hash { get; set; }
+
         public BlockTransactionBlock Block { get; set; }
 
         public BlockTransactionIO[] Inputs { get; set; }
         
         public BlockTransactionIO[] Outputs { get; set; }
+
+        public string Metadata { get; set; }
     }
 
     public class BlockTransactionBlock
@@ -52,6 +60,9 @@ namespace RockStats.Watcher
 
     public class BlockTransactionIO
     {
+        [JsonProperty("oindex")]
+        public int Index { get; set; }
+
         public string Amount { get; set; }
         
         public string Currency { get; set; }
@@ -60,5 +71,6 @@ namespace RockStats.Watcher
 
         [JsonProperty("inserted_at")]
         public string InsertedAt { get; set; }
+
     }
 }

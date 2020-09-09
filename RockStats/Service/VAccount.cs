@@ -20,8 +20,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
+using Nethereum.Util;
 using Raven.Client.Documents.Indexes;
 using Raven.Client.Documents.Linq;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using Vidyano.Service.RavenDB;
 using Vidyano.Service.Repository;
@@ -34,6 +37,11 @@ namespace RockStats.Service
     [Mapped]
     public class VAccount
     {
+        /// <summary>
+        /// The Id of the account.
+        /// </summary>
+        public string Id { get; set; }
+
         /// <summary>
         /// The full blockchain address.
         /// </summary>
@@ -57,17 +65,45 @@ namespace RockStats.Service
         /// <summary>
         /// The amount of ROCK tokens currently held.
         /// </summary>
-        public decimal Balance { get; set; }
+        public string Balance { get; set; }
 
         /// <summary>
         /// The amount of ROCK tokens sent until now.
         /// </summary>
-        public decimal Sent { get; set; }
+        public string Sent { get; set; }
+
+        /// <summary>
+        /// The amount of ROCK transactions sent.
+        /// </summary>
+        public int TxsOut { get; set; }
+
+        /// <summary>
+        /// The amount of ROCK transactions received.
+        /// </summary>
+        public int TxsIn { get; set; }
 
         /// <summary>
         /// Is the account owned by a moderator of the community.
         /// </summary>
         public bool Moderator { get; set; }
+    }
+
+    public class VAccountActions : PersistentObjectActions<RockStatsContext, VAccount>
+    {
+        public VAccountActions(RockStatsContext context)
+            : base(context)
+        {
+        }
+
+        /// <summary>
+        /// Load the Account PersistentObject when trying to load a VAccount PersistentObject.
+        /// </summary>
+        public override void OnPreviewLoad(PreviewLoadArgs e)
+        {
+            e.Reroute("Account");
+
+            base.OnPreviewLoad(e);
+        }
     }
 
     /// <summary>
@@ -80,29 +116,37 @@ namespace RockStats.Service
             // Selects all transactions to calculate the amount of ROCKs sent.
             AddMap<Transaction>(senders => from tx in senders
                                            let sender = LoadDocument<Account>(tx.Sender)
+                                           let amount = !string.IsNullOrEmpty(tx.Amount) ? tx.Amount : "0"
                                            select new VAccount
                                            {
+                                               Id = sender.Id ?? "accounts/000000000000000000000000000000000000dead",
                                                Address = sender.Address,
                                                Redditor = sender.Owner,
                                                Avatar = sender.Avatar,
                                                Flairs = sender.Flairs,
-                                               Balance = (decimal.Parse(tx.Amount) / 1000000000000000000M) * -1,
-                                               Sent = tx.Receiver != "accounts/000000000000000000000000000000000000dead" ? decimal.Parse(tx.Amount) / 1000000000000000000M : 0M,
-                                               Moderator = sender.Moderator.HasValue ? sender.Moderator.Value : false
-                                           });
+                                               Balance = "-" + amount,
+                                               Sent = tx.Receiver != "accounts/000000000000000000000000000000000000dead" ? amount : "0",
+                                               Moderator = sender.Moderator.HasValue ? sender.Moderator.Value : false,
+                                               TxsIn = 0,
+                                               TxsOut = 1
+                                           }); ;
 
             // Selects all transactions to calculate the ROCK balance.
             AddMap<Transaction>(receivers => from tx in receivers
                                              let receiver = LoadDocument<Account>(tx.Receiver)
+                                             let amount = !string.IsNullOrEmpty(tx.Amount) ? tx.Amount : "0"
                                              select new VAccount
                                              {
+                                                 Id = receiver.Id ?? "accounts/000000000000000000000000000000000000dead",
                                                  Address = receiver.Address,
                                                  Redditor = receiver.Owner,
                                                  Avatar = receiver.Avatar,
                                                  Flairs = receiver.Flairs,
-                                                 Balance = decimal.Parse(tx.Amount) / 1000000000000000000M,
-                                                 Sent = 0M,
-                                                 Moderator = receiver.Moderator.HasValue ? receiver.Moderator.Value : false
+                                                 Balance = amount,
+                                                 Sent = "0",
+                                                 Moderator = receiver.Moderator.HasValue ? receiver.Moderator.Value : false,
+                                                 TxsIn = 1,
+                                                 TxsOut = 0
                                              });
 
             // Reduce all mapped transactions from above, grouped by the Redditor that owns them.
@@ -110,21 +154,31 @@ namespace RockStats.Service
                 from result in results
                 group result by result.Redditor
                 into g
+                let balance = g.Aggregate("0", (a, b) => BigDecimal.Add(BigDecimal.Parse(a), BigDecimal.Parse(b.Balance)).ToString())
+                let sent = g.Aggregate("0", (a, b) => BigDecimal.Add(BigDecimal.Parse(a), BigDecimal.Parse(b.Sent)).ToString())
                 select new VAccount
                 {
+                    Id = g.First().Id,
                     Address = g.First().Address,
                     Redditor = g.Key,
                     Avatar = g.First().Avatar,
                     Flairs = g.First().Flairs,
-                    Balance = g.Sum(t => t.Balance),
-                    Sent = g.Sum(t => t.Sent),
-                    Moderator = g.First().Moderator
+                    Balance = !string.IsNullOrEmpty(balance) ? balance : "0",
+                    Sent = !string.IsNullOrEmpty(sent) ? sent : "0",
+                    Moderator = g.First().Moderator,
+                    TxsIn = g.Sum(t => t.TxsIn),
+                    TxsOut = g.Sum(t => t.TxsOut)
                 };
+
+            AdditionalSources = new Dictionary<string, string>
+            {
+                { "BigDecimal", Properties.Resources.BigDecimal }
+            };
         }
     }
 
     partial class RockStatsContext
     {
-        public IRavenQueryable<VAccount> VAccounts => Query<VAccount, VAccounts_Details>().Where(a => !a.Moderator).AsNoTracking();
+        public IRavenQueryable<VAccount> VAccounts => Query<VAccount, VAccounts_Details>().Where(a => a.Id != "accounts/000000000000000000000000000000000000dead").AsNoTracking();
     }
 }

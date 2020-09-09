@@ -10,9 +10,34 @@
       "UserId": "85029f44-1c28-4ea9-8e95-8da943f7babf"
     },
     {
+      "Id": "7e22938e-5b8f-45b1-bc61-562bdc99a712",
+      "Resource": "cfd29391-6f13-463b-8a74-ca86cba41596",
+      "UserId": "85029f44-1c28-4ea9-8e95-8da943f7babf"
+    },
+    {
+      "Id": "d7175e91-5b67-4eec-a306-104067215588",
+      "Resource": "QueryRead/RockStats.VTransaction",
+      "UserId": "85029f44-1c28-4ea9-8e95-8da943f7babf"
+    },
+    {
       "Id": "46e89588-1b4e-4a8d-95ab-47da3acc3f37",
-      "Resource": "QueryReadEditNewDelete/RockStats",
+      "Resource": "QueryReadEditNew/RockStats",
       "UserId": "fe9429ba-d5cd-4e7c-bbe4-05a4c3497d97"
+    },
+    {
+      "Id": "d5b5776a-ffdc-4d95-9964-b38b37eae5f4",
+      "Resource": "QueryReadEditNewDelete/RockStats.Job",
+      "UserId": "fe9429ba-d5cd-4e7c-bbe4-05a4c3497d97"
+    },
+    {
+      "Id": "35a0461b-5a16-452d-8d5f-0feaf54cae57",
+      "Resource": "Read/RockStats.Account",
+      "UserId": "85029f44-1c28-4ea9-8e95-8da943f7babf"
+    },
+    {
+      "Id": "89fe0d35-bb06-40a4-9f41-54e67133d43a",
+      "Resource": "Read/RockStats.VAccount",
+      "UserId": "85029f44-1c28-4ea9-8e95-8da943f7babf"
     },
     {
       "Id": "61ebfcf5-818c-446e-9a93-d190ea9e02a2",

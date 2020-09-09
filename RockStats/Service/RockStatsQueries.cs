@@ -20,14 +20,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
+using System.Linq;
+using Vidyano.Service.Repository;
+
 namespace RockStats.Service
 {
     partial class RockStatsContext
     {
-        // NOTE: Contains the custom queries that can be used inside the application
-
-        // public IQueryable CustomQueryName(CustomQueryArgs e)
-        // {
-        // }
+        public IQueryable<VTransaction> AccountTransactions(CustomQueryArgs args)
+        {
+            var account = Session.Load<Account>(args.Parent.ObjectId);
+            return VTransactions.Where(t => t.Sender == account.Owner || t.Receiver == account.Owner);
+        }
     }
 }

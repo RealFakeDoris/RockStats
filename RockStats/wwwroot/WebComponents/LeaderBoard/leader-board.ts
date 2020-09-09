@@ -21,13 +21,26 @@ SOFTWARE.
  */
 
 namespace RockStats.WebComponents {
-    type Sort = "balance" | "sent";
+    type Sort = "balance" | "sent" | "in" | "out";
+    export const flairs_map = {
+        "rock": "https://emoji.redditmedia.com/l9rufetdlxd51_t5_m3idt/rock",
+        "salamander": "https://emoji.redditmedia.com/b517pvmtlxd51_t5_m3idt/salamander",
+        "soon": "https://emoji.redditmedia.com/g4dm01b3mxd51_t5_m3idt/soon",        
+        "omg": "https://emoji.redditmedia.com/htvyq0opp6d51_t5_m3idt/omg",
+        "wve": "https://emoji.redditmedia.com/2pl9xkmspnk51_t5_m3idt/wve",
+        "snl": "https://emoji.redditmedia.com/88nfcm4xpnk51_t5_m3idt/snl",
+        "skb":"https://emoji.redditmedia.com/at87t5aopnk51_t5_m3idt/skb"
+    };
 
     @Vidyano.WebComponents.WebComponent.register({
         properties: {
             accounts: {
                 type: Object,
                 readOnly: true
+            },
+            items: {
+                type: Array,
+                computed: "_items(accounts.items, sort)"
             },
             sort: {
                 type: String,
@@ -39,6 +52,15 @@ namespace RockStats.WebComponents {
                 type: Boolean,
                 readOnly: true,
                 value: true
+            },
+            selectedAccount: {
+                type: Object,
+                value: null
+            },
+            hasSelectedAccount: {
+                type: Boolean,
+                computed: "_computeHasSelectedAccount(selectedAccount)",
+                reflectToAttribute: true
             }
         },
         forwardObservers: [
@@ -50,6 +72,7 @@ namespace RockStats.WebComponents {
         readonly accounts: Vidyano.Query; private _setAccounts: (accounts: Vidyano.Query) => void;
         readonly sort: string; private _setSort: (sort: string) => void;
         readonly isBusy: boolean; private _setIsBusy: (isBusy: boolean) => void;
+        selectedAccount: Vidyano.QueryResultItem;
 
         async attached() {
             super.attached();
@@ -64,24 +87,81 @@ namespace RockStats.WebComponents {
             this._setIsBusy(false);
         }
 
-        private _items(items: Vidyano.QueryResultItem[]) {
-            const column = this.sort === "balance" ? "Balance" : "Sent";
-            const result = items.filter(i => i.values.Redditor != null && i.values.Avatar != null && (i.values[column] as BigNumber).greaterThan(0));
-            
-            let index = 0;
-            let previous: BigNumber = null;
+        private _items(items: Vidyano.QueryResultItem[], sort: string) {
+            if (items == null)
+                return [];
 
-            result.forEach(i => {
-                const value = i.values[column] as BigNumber;
-                if (previous == null || value.lessThan(previous)) {
-                    index++;
-                    previous = value;
-                }
+            if (!document.baseURI.trimEnd('/').endsWith("/team"))
+                items = items.filter(i => !i.values.Moderator);
+            else
+                items = items.filter(i => i.values.Moderator);
+
+            let index = 0;
+            let result: Vidyano.QueryResultItem[];
+            if (sort == "balance" || sort == "sent") {
+                const column = sort === "balance" ? "Balance" : "Sent";
+                const columnBN = column + "BigNumber";
+                const div = new BigNumber("1000000000000000000");
+                result = items.filter(i => i.values.Redditor != null && i.values.Avatar != null).map(i => {
+                    if (!i.values[columnBN])
+                        i.values[columnBN] = (new BigNumber(i.values[column])).div(div);
+
+                    return i;
+                }).filter(i => (i.values[columnBN] as BigNumber).greaterThan(0)).sort((a, b) => {
+                    return a.values[columnBN].greaterThan(b.values[columnBN]) ? -1 : 1;
+                });
                 
-                i.id = <any>index;
-            });
+                let previous: BigNumber = null;
+
+                result.forEach(i => {
+                    const value = i.values[columnBN] as BigNumber;
+                    if (previous == null || value.lessThan(previous)) {
+                        index++;
+                        previous = value;
+                    }
+                    
+                    i.values.Rank = <any>index;
+                });
+            } else {
+                let column: string;
+                switch(sort) {
+                    case "in": {
+                        column = "TxsIn";
+                        break;
+                    }
+                    case "out": {
+                        column = "TxsOut";
+                        break;
+                    }
+                }
+
+                let previous;
+                result = items.filter(i => i.values[column] > 0).map(i => {
+                    const value = i.values[column] as number;
+                    if (previous == null || value < previous) {
+                        index++;
+                        previous = value;
+                    }
+                    
+                    i.values.Rank = <any>index;
+
+                    return i;
+                });
+            }
 
             return result;
+        }
+        
+        private _select(e: TapEvent) {
+            this.selectedAccount = e.model.account;
+        }
+
+        private _closeSelectedAccount() {
+            this.selectedAccount = null;
+        }
+
+        _computeHasSelectedAccount(selectedAccount: Vidyano.QueryResultItem) {
+            return selectedAccount != null;
         }
 
         private _address(account: Vidyano.QueryResultItem) {
@@ -92,41 +172,22 @@ namespace RockStats.WebComponents {
             if (flairs == null)
                 return [];
 
-            return flairs.split(":").filter(f => f != null && f.length > 0).map(f => {
-                switch (f) {
-                    case "rock":
-                        return "https://emoji.redditmedia.com/l9rufetdlxd51_t5_m3idt/rock";
-                    
-                    case "salamander":
-                        return "https://emoji.redditmedia.com/b517pvmtlxd51_t5_m3idt/salamander";
-
-                    case "soon":
-                        return "https://emoji.redditmedia.com/g4dm01b3mxd51_t5_m3idt/soon";
-                    
-                    case "omg":
-                        return "https://emoji.redditmedia.com/htvyq0opp6d51_t5_m3idt/omg";
-
-                    case "wve":
-                        return "https://emoji.redditmedia.com/2pl9xkmspnk51_t5_m3idt/wve";
-
-                    case "snl":
-                        return "https://emoji.redditmedia.com/88nfcm4xpnk51_t5_m3idt/snl";
-
-                    case "skb":
-                        return "https://emoji.redditmedia.com/at87t5aopnk51_t5_m3idt/skb";
-
-                    default:
-                        return null;
-                }
-            }).filter(f => !!f);
+            return flairs.split(":").filter(f => f != null && f.length > 0).map(f => flairs_map[f] ?? null).filter(f => !!f);
         }
 
         private _avatar(account: Vidyano.QueryResultItem) {
             return account.values.Avatar?.split("?")[0];
         }
 
-        private _balance(account: Vidyano.QueryResultItem, sort: Sort) {
-            const n: BigNumber = account.values[sort === "balance" ? "Balance" : "Sent"];
+        private _value(account: Vidyano.QueryResultItem, sort: Sort) {
+            if (sort !== "balance" && sort !== "sent") {
+                if (sort == "in")
+                    return account.values.TxsIn;
+                else if (sort == "out")
+                    return account.values.TxsOut;
+            }
+
+            const n: BigNumber = account.values[(sort === "balance" ? "Balance" : "Sent") + "BigNumber"];
 
             if (n.lessThan(10000))
                 return n.round(2);
@@ -155,7 +216,25 @@ namespace RockStats.WebComponents {
             if (!this.accounts || this.isBusy)
                 return;
 
-            const columnName = sort === "balance" ? "Balance" : "Sent";
+            let columnName: string;
+            switch(sort) {
+                case "balance": {
+                    columnName = "Balance"
+                    break;
+                }
+                case "sent": {
+                    columnName = "Sent"
+                    break;
+                }
+                case "in": {
+                    columnName = "TxsIn"
+                    break;
+                }
+                case "out": {
+                    columnName = "TxsOut"
+                    break;
+                }
+            }
             this.accounts.getColumn(columnName).sort(Vidyano.SortDirection.Descending);
 
             try {

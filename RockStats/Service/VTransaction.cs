@@ -20,49 +20,27 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
+using Raven.Client.Documents.Indexes;
 using Raven.Client.Documents.Linq;
 using System;
-using Vidyano.Service.Repository;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Vidyano.Service.RavenDB;
 
 namespace RockStats.Service
 {
     /// <summary>
-    /// Database Transaction object.
+    /// A view object for the VTransaction_Details index.
     /// </summary>
-    public class Transaction
+    public class VTransaction
     {
-        /// <summary>
-        /// The id of the transaction in the form of blocks/[BLOCKNUMBER]/txs/accounts/[SENDER_ADDRESS]/accounts/[RECEIVER_ADDRESS]
-        /// </summary>
         public string Id { get; set; }
 
         /// <summary>
         /// The timestamp of the transaction.
         /// </summary>
-        public DateTime Timestamp { get; set; }
-
-        /// <summary>
-        /// A reference to the block that contains the transaction.
-        /// </summary>
-        [Reference(typeof(Block))]
-        public string Block { get; set; }
-
-        /// <summary>
-        /// A reference to the account that send the transaction.
-        /// </summary>
-        [Reference(typeof(Account))]
-        public string Sender { get; set; }
-
-        /// <summary>
-        /// A reference to the account the received the transaction.
-        /// </summary>
-        [Reference(typeof(Account))]
-        public string Receiver { get; set; }
-
-        /// <summary>
-        /// The amount of tokens sent.
-        /// </summary>
-        public string Amount { get; set; }
+        public long Timestamp { get; set; }
 
         /// <summary>
         /// The transaction hash
@@ -70,13 +48,50 @@ namespace RockStats.Service
         public string Hash { get; set; }
 
         /// <summary>
+        /// The Reddit user that sent the transaction.
+        /// </summary>
+        public string Sender { get; set; }
+
+        /// <summary>
+        /// The Reddit user that received the transaction.
+        /// </summary>
+        public string Receiver { get; set; }
+
+        /// <summary>
+        /// The amount of ROCK tokens sent in this transaction.
+        /// </summary>
+        public string Amount { get; set; }
+
+        /// <summary>
         /// Optional transaction metadata
         /// </summary>
         public string Metadata { get; set; }
     }
 
+    public class VTransaction_Details : AbstractIndexCreationTask<Transaction>
+    {
+        public VTransaction_Details()
+        {
+            Map = transactions =>
+                from tx in transactions
+                let sender = LoadDocument<Account>(tx.Sender)
+                let receiver = LoadDocument<Account>(tx.Receiver)
+                select new VTransaction
+                {
+                    Timestamp = (long)tx.Timestamp.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds,
+                    Hash = tx.Hash,
+                    Sender = sender != null ? sender.Owner : "0x" + tx.Sender.Split(new[] { '/' }, 2)[1],
+                    Receiver = receiver != null ? receiver.Owner : "0x" + tx.Receiver.Split(new[] { '/' }, 2)[1],
+                    Amount = tx.Amount,
+                    Metadata = tx.Metadata
+                };
+
+            StoreAllFields(FieldStorage.Yes);
+        }
+    }
+
     partial class RockStatsContext
     {
-        public IRavenQueryable<Transaction> BlockTransactions => base.Query<Transaction>();
+        public IRavenQueryable<VTransaction> VTransactions => Query<VTransaction, VTransaction_Details>().AsNoTracking();
     }
 }

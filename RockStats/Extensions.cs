@@ -29,13 +29,23 @@ namespace RockStats
         private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
-        /// Transforms the unix time to a DataTime object.
+        /// Transforms the unix time to a DateTime object.
         /// </summary>
         /// <param name="unixTime">The unix time.</param>
         /// <returns>A DateTime object.</returns>
         public static DateTime FromUnixTime(this long unixTime)
         {
             return epoch.AddSeconds(unixTime);
+        }
+
+        /// <summary>
+        /// Transforms the DateTime time to unix time since epoch.
+        /// </summary>
+        /// <param name="unixTime">The unix time.</param>
+        /// <returns>A DateTime object.</returns>
+        public static long ToUnixTime(this DateTime when)
+        {
+            return (long)(when - epoch).TotalSeconds;
         }
     }
 }

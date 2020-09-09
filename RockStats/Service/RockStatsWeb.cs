@@ -20,9 +20,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Raven.Client.Documents;
 using Vidyano.Service;
 using Vidyano.Service.Repository;
 
@@ -56,12 +59,12 @@ namespace RockStats.Service
             public string Flairs { get; set; }
         }
 
-        class Balance: Account
+        class Balance : Account
         {
             /// <summary>
             /// The current ROCK balance for this account.
             /// </summary>
-            public decimal Amount { get; set; }
+            public string Amount { get; set; }
         }
 
         class Sent : Account
@@ -69,7 +72,7 @@ namespace RockStats.Service
             /// <summary>
             /// The amount of ROCKs sent from this account.
             /// </summary>
-            public decimal Amount { get; set; }
+            public string Amount { get; set; }
         }
 
         /// <summary>

@@ -25,7 +25,7 @@ SOFTWARE.
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(180deg, #FFFFFF 0%, #EFF1FF 100%);
+    background: linear-gradient(180deg, #FFFFFF 112px, #EFF1FF 100%);
     position: relative;
     font-size: 24px;
     --leader-board-row-height: 48px;
@@ -67,7 +67,7 @@ SOFTWARE.
         position: relative;
         z-index: 5;
         box-sizing: border-box;
-        padding-top: 12px;
+        padding-top: 12px 12px 0 12px;
 
         h1 {
             font-size: 100%;
@@ -91,8 +91,8 @@ SOFTWARE.
                     color: #444;
                 }
 
-                &:first-of-type {
-                    margin-right: 12px;
+                &:not(:first-of-type) {
+                    margin-left: 12px;
                 }
             }
         }
@@ -101,106 +101,142 @@ SOFTWARE.
     main {
         position: relative;
         padding-top: 112px;
-    }
+        min-height: 50vh;
 
-    iron-list {
-        margin: 0 12px;
-        box-sizing: border-box;
-    }
-
-    .account-wrapper {
-        padding: 12px 6px;
-        cursor: pointer;
-        text-decoration: none !important;
-        color: #333 !important;
-
-        &:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-    }
-
-    .account {
-        line-height: var(--leader-board-row-height);
-
-        .rank {
-            width: 64px;
-            text-align: center;
+        iron-list {
+            margin: 0 12px;
+            box-sizing: border-box;
         }
 
-        img.avatar {
-            margin-left: 12px;
-            width: var(--leader-board-row-height);
-            height: var(--leader-board-row-height);
-            object-fit: cover;
-        }
+        .account-wrapper {
+            padding: 12px 6px;
+            cursor: pointer;
+            text-decoration: none !important;
+            color: #333 !important;
 
-        .who {
-            padding: 0 20px;
-
-            span {
-                white-space: nowrap;
-                text-overflow: ellipsis;
-                overflow: hidden;
-            }
-
-            h2 {
-                margin: 0;
-                font-size: 24px;
-                font-weight: normal;
+            &:hover {
+                background-color: #EFF1FF;
             }
         }
 
-        .flairs {
-            margin-left: 8px;
+        .account {
+            line-height: var(--leader-board-row-height);
 
-            img {
-                width: 25px;
-                height: 25px;
-                margin-bottom: 8px;
-                margin-right: 2px;
+            .rank {
+                width: 64px;
+                text-align: center;
+            }
+
+            img.avatar {
+                margin-left: 12px;
+                width: var(--leader-board-row-height);
+                height: var(--leader-board-row-height);
+                object-fit: cover;
+            }
+
+            .who {
+                padding: 0 20px;
+
+                span {
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                }
+
+                h2 {
+                    margin: 0;
+                    font-size: 24px;
+                    font-weight: normal;
+                }
+            }
+
+            .flairs {
+                margin-left: 8px;
+
+                img {
+                    width: 25px;
+                    height: 25px;
+                    margin-bottom: 8px;
+                    margin-right: 2px;
+                }
+            }
+
+            .medal svg {
+                width: 48px;
+                height: 48px;
+            }
+
+            .medal:not([hidden]) {
+                width: 64px;
+                height: 48px;
+                text-align: center;
+
+                &[rank="1"] #circle {
+                    fill: #e6c300;
+                }
+
+                &[rank="2"] #circle {
+                    fill: #C0C0C0;
+                }
+
+                &[rank="3"] #circle {
+                    fill: #CD7F32;
+                }
             }
         }
-
-        .medal svg {
-            width: 48px;
-            height: 48px;
-        }
-
-        .medal:not([hidden]) {
-            width: 64px;
-            height: 48px;
-            text-align: center;
-
-            &[rank="1"] #circle {
-                fill: #e6c300;
-            }
-
-            &[rank="2"] #circle {
-                fill: #C0C0C0;
-            }
-
-            &[rank="3"] #circle {
-                fill: #CD7F32;
-            }
-        }
-    }
-
-    header {
-        padding: 0 12px;
-    }
-
-    main {
-        padding-bottom: 48px;
     }
 
     footer {
         text-align: center;
-        line-height: 48px;
+        padding: 24px 0;
         font-size: 66%;
 
         a {
             color: #333 !important;
             text-decoration: none;
+        }
+    }
+
+    .side-panel-wrapper {
+        position: fixed;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 5;
+
+        .side-panel-backdrop {
+            opacity: 0;
+            background-color: rgba(0, 0, 0, 0.25);
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .side-panel {
+            position: fixed;
+            right: -100%;
+            top: 0;
+            bottom: 0;
+            width: 500px;
+            max-width: 100vw;
+            background-color: white;
+            z-index: 5;
+            transition: right .3s cubic-bezier(.05,.74,.2,.99);
+        }
+    }
+}
+
+:host-context([has-selected-account]) {
+    .side-panel-wrapper {
+        pointer-events: initial;
+
+        .side-panel-backdrop {
+            opacity: 1;
+        }
+
+        .side-panel {
+            right: 0;
+            box-shadow: -1px 0px 15px 0px rgba(0,0,0,0.4);
         }
     }
 }
@@ -231,7 +267,7 @@ SOFTWARE.
         }
     }
 
-    .balance {
+    .value {
         font-size: 100%;
         line-height: 26px;
     }
@@ -247,5 +283,9 @@ SOFTWARE.
             width: 36px !important;
             height: 36px !important;
         }
+    }
+
+    footer {
+        font-size: 100%;
     }
 }

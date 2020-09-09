@@ -105,16 +105,18 @@ namespace RockStats.Service
                         continue;
 
                     // Store the receiver ROCK transactions that are different from the sender.
-                    foreach (var receiver in tx.Outputs.Where(t => t.Currency == rock && t.Owner != input.Owner))
+                    foreach (var output in tx.Outputs.Where(t => t.Currency == rock && t.Owner != input.Owner))
                     {
                         await bulkInsert.StoreAsync(new Transaction
                         {
-                            Id = $"blocks/{height}/txs/accounts/{input.Owner[2..]}/accounts/{receiver.Owner[2..]}",
+                            Id = $"blocks/{height}/transactions/{tx.Index}/output/{output.Index}",
                             Timestamp = tx.Block.Timestamp.FromUnixTime(),
                             Block = block.Id,
                             Sender = $"accounts/{input.Owner[2..]}",
-                            Receiver = $"accounts/{receiver.Owner[2..]}",
-                            Amount = receiver.Amount
+                            Receiver = $"accounts/{output.Owner[2..]}",
+                            Amount = output.Amount,
+                            Hash = tx.Hash,
+                            Metadata = tx.Metadata
                         });
                     }
                 }

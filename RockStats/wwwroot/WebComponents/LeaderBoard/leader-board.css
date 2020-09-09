@@ -1,3 +1,24 @@
+/*
+Copyright (c) 2020 - 0xCD7F82BcFa333B4072A11Bd0B1da95c9b5f9E869 m/44'/60'/0'/0/0
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+ */
 :host {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -8,8 +29,7 @@
           flex-direction: column;
   width: 100vw;
   height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(#FFFFFF), to(#EFF1FF));
-  background: linear-gradient(180deg, #FFFFFF 0%, #EFF1FF 100%);
+  background: linear-gradient(180deg, #FFFFFF 112px, #EFF1FF 100%);
   position: relative;
   font-size: 24px;
   --leader-board-row-height: 48px;
@@ -54,7 +74,7 @@
   z-index: 5;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding-top: 12px;
+  padding-top: 12px 12px 0 12px;
 }
 
 :host header h1 {
@@ -79,42 +99,43 @@
   color: #444;
 }
 
-:host header .sort div:first-of-type {
-  margin-right: 12px;
+:host header .sort div:not(:first-of-type) {
+  margin-left: 12px;
 }
 
 :host main {
   position: relative;
   padding-top: 112px;
+  min-height: 50vh;
 }
 
-:host iron-list {
+:host main iron-list {
   margin: 0 12px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
-:host .account-wrapper {
+:host main .account-wrapper {
   padding: 12px 6px;
   cursor: pointer;
   text-decoration: none !important;
   color: #333 !important;
 }
 
-:host .account-wrapper:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+:host main .account-wrapper:hover {
+  background-color: #EFF1FF;
 }
 
-:host .account {
+:host main .account {
   line-height: var(--leader-board-row-height);
 }
 
-:host .account .rank {
+:host main .account .rank {
   width: 64px;
   text-align: center;
 }
 
-:host .account img.avatar {
+:host main .account img.avatar {
   margin-left: 12px;
   width: var(--leader-board-row-height);
   height: var(--leader-board-row-height);
@@ -122,73 +143,109 @@
      object-fit: cover;
 }
 
-:host .account .who {
+:host main .account .who {
   padding: 0 20px;
 }
 
-:host .account .who span {
+:host main .account .who span {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
-:host .account .who h2 {
+:host main .account .who h2 {
   margin: 0;
   font-size: 24px;
   font-weight: normal;
 }
 
-:host .account .flairs {
+:host main .account .flairs {
   margin-left: 8px;
 }
 
-:host .account .flairs img {
+:host main .account .flairs img {
   width: 25px;
   height: 25px;
   margin-bottom: 8px;
   margin-right: 2px;
 }
 
-:host .account .medal svg {
+:host main .account .medal svg {
   width: 48px;
   height: 48px;
 }
 
-:host .account .medal:not([hidden]) {
+:host main .account .medal:not([hidden]) {
   width: 64px;
   height: 48px;
   text-align: center;
 }
 
-:host .account .medal:not([hidden])[rank="1"] #circle {
+:host main .account .medal:not([hidden])[rank="1"] #circle {
   fill: #e6c300;
 }
 
-:host .account .medal:not([hidden])[rank="2"] #circle {
+:host main .account .medal:not([hidden])[rank="2"] #circle {
   fill: #C0C0C0;
 }
 
-:host .account .medal:not([hidden])[rank="3"] #circle {
+:host main .account .medal:not([hidden])[rank="3"] #circle {
   fill: #CD7F32;
-}
-
-:host header {
-  padding: 0 12px;
-}
-
-:host main {
-  padding-bottom: 48px;
 }
 
 :host footer {
   text-align: center;
-  line-height: 48px;
+  padding: 24px 0;
   font-size: 66%;
 }
 
 :host footer a {
   color: #333 !important;
   text-decoration: none;
+}
+
+:host .side-panel-wrapper {
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+}
+
+:host .side-panel-wrapper .side-panel-backdrop {
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+  -webkit-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
+}
+
+:host .side-panel-wrapper .side-panel {
+  position: fixed;
+  right: -100%;
+  top: 0;
+  bottom: 0;
+  width: 500px;
+  max-width: 100vw;
+  background-color: white;
+  z-index: 5;
+  -webkit-transition: right 0.3s cubic-bezier(0.05, 0.74, 0.2, 0.99);
+  transition: right 0.3s cubic-bezier(0.05, 0.74, 0.2, 0.99);
+}
+
+:host-context([has-selected-account]) .side-panel-wrapper {
+  pointer-events: initial;
+}
+
+:host-context([has-selected-account]) .side-panel-wrapper .side-panel-backdrop {
+  opacity: 1;
+}
+
+:host-context([has-selected-account]) .side-panel-wrapper .side-panel {
+  right: 0;
+  -webkit-box-shadow: -1px 0px 15px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: -1px 0px 15px 0px rgba(0, 0, 0, 0.4);
 }
 
 :host-context([is-tablet]) {
@@ -218,7 +275,7 @@
   margin-bottom: 0 !important;
 }
 
-:host-context([is-phone]) .balance {
+:host-context([is-phone]) .value {
   font-size: 100%;
   line-height: 26px;
 }
@@ -234,5 +291,9 @@
 :host-context([is-phone]) .medal svg {
   width: 36px !important;
   height: 36px !important;
+}
+
+:host-context([is-phone]) footer {
+  font-size: 100%;
 }
 /*# sourceMappingURL=leader-board.css.map */

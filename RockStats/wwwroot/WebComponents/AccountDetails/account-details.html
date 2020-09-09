@@ -1,0 +1,80 @@
+<!--
+Copyright (c) 2020 - 0xCD7F82BcFa333B4072A11Bd0B1da95c9b5f9E869 m/44'/60'/0'/0/0
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+ -->
+
+ <dom-module id="rockstats-account-details">
+    <template>
+        <link rel="stylesheet" href="account-details.css" />
+        <header class="layout horizontal">
+            <div class="flex layout horizontal">
+                <img class="avatar" src$="[[_avatar(accountItem)]]">
+                <div class="who flex">[[accountItem.values.Redditor]]</div>
+            </div>
+            <button is="vi-button" icon="Remove" on-tap="_close" inverse></button>
+        </header>
+        <main class="flex relative">
+            <vi-scroller class="fit" no-horizontal>
+                <iron-list id="list" items="[[account.queries.Account_Transactions.items]]" as="transaction">
+                    <template>
+                        <div class="transaction-wrapper">
+                            <a class="transaction layout horizontal" href="[[_transactionHref(transaction)]]" target="_blank">
+                                <vi-icon source="[[_type(transaction)]]"></vi-icon>
+                                <div class="flex">
+                                    <div class="label flex">[[_label(transaction)]]</div>
+                                    <div class="when">[[_when(transaction)]]</div>
+                                </div>
+                                <div class="amount" type$="[[_amountType(transaction)]]">[[_amount(transaction)]]</div>
+                            </a>
+                        </div>
+                    </template>
+                </iron-list>
+            </vi-scroller>
+            <vi-spinner hidden$="[[!loading]]"></vi-spinner>
+        </main>
+        <foot></foot>
+    </template>
+</dom-module>
+
+<vi-icon name="Out">
+    <svg viewBox="0 0 32 32">
+        <g>
+            <path d="M 5.3339844,0.01367188 V 8.0117188 H 16.431641 L 0,24.443359 7.5429688,31.986328 24,15.529297 v 11.150391 h 8 V 8.0117188 0.015625 0.01367188 h -8 z"></path>
+        </g>
+    </svg>
+</vi-icon>
+
+<vi-icon name="In">
+    <svg viewBox="0 0 32 32">
+        <g>
+            <path d="M 26.666039,31.986305 V 23.988258 H 15.568382 L 32.000023,7.5566174 24.457055,0.01364844 8.0000234,16.47068 V 5.3202884 H 2.344e-5 v 18.6679696 7.996094 0.002 H 8.0000234 Z"></path>
+        </g>
+    </svg>
+</vi-icon>
+
+<vi-icon name="Flair">
+    <svg viewBox="0 0 32 32">
+        <g>
+            <path d="m 26.726562,1.3789062 -1.4375,3.2363282 H 1.6777344 C 0.71892717,4.6152344 0,5.2130702 0,6.171875 0,6.5314306 -1.7786774e-4,6.6521662 0.359375,7.0117188 L 6.1113281,17.4375 c 0.4794042,0.958808 1.4394525,1.558594 2.7578125,1.558594 H 20.615234 l 1.4375,2.755859 v 0.121094 c 0,0.119853 -0.120384,0.359375 -0.240234,0.359375 H 3.2363281 v 3.115234 h 0.71875 c -0.4794036,0.599256 -0.71875,1.319248 -0.71875,2.158203 0,1.677916 1.4385645,3.115235 3.2363281,3.115235 1.677913,0 3.1152344,-1.437319 3.1152344,-3.115235 0,-0.838955 -0.2393461,-1.558947 -0.71875,-2.158203 H 20.015625 c -0.479404,0.599256 -0.839844,1.319248 -0.839844,2.158203 0,1.677916 1.438566,3.115235 3.236328,3.115235 1.797766,0 3.236329,-1.437319 3.236329,-3.115235 0,-1.078657 -0.600496,-2.157316 -1.439454,-2.636718 0.838958,-0.599256 1.439453,-1.558061 1.439454,-2.636719 0,-0.479406 -0.239526,-1.198335 -0.359376,-1.677734 L 23.011719,16.71875 28.763672,4.6152344 H 32 V 1.3789062 Z"></path>
+        </g>
+    </svg>
+</vi-icon>
+
+<script src="account-details.js"></script>

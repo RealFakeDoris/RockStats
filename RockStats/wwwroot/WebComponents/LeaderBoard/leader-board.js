@@ -3,6 +3,15 @@ var RockStats;
 (function (RockStats) {
     var WebComponents;
     (function (WebComponents) {
+        WebComponents.flairs_map = {
+            "rock": "https://emoji.redditmedia.com/l9rufetdlxd51_t5_m3idt/rock",
+            "salamander": "https://emoji.redditmedia.com/b517pvmtlxd51_t5_m3idt/salamander",
+            "soon": "https://emoji.redditmedia.com/g4dm01b3mxd51_t5_m3idt/soon",
+            "omg": "https://emoji.redditmedia.com/htvyq0opp6d51_t5_m3idt/omg",
+            "wve": "https://emoji.redditmedia.com/2pl9xkmspnk51_t5_m3idt/wve",
+            "snl": "https://emoji.redditmedia.com/88nfcm4xpnk51_t5_m3idt/snl",
+            "skb": "https://emoji.redditmedia.com/at87t5aopnk51_t5_m3idt/skb"
+        };
         var LeaderBoard = (function (_super) {
             __extends(LeaderBoard, _super);
             function LeaderBoard() {
@@ -31,20 +40,69 @@ var RockStats;
                     });
                 });
             };
-            LeaderBoard.prototype._items = function (items) {
-                var column = this.sort === "balance" ? "Balance" : "Sent";
-                var result = items.filter(function (i) { return i.values.Redditor != null && i.values.Avatar != null && i.values[column].greaterThan(0); });
+            LeaderBoard.prototype._items = function (items, sort) {
+                if (items == null)
+                    return [];
+                if (!document.baseURI.trimEnd('/').endsWith("/team"))
+                    items = items.filter(function (i) { return !i.values.Moderator; });
+                else
+                    items = items.filter(function (i) { return i.values.Moderator; });
                 var index = 0;
-                var previous = null;
-                result.forEach(function (i) {
-                    var value = i.values[column];
-                    if (previous == null || value.lessThan(previous)) {
-                        index++;
-                        previous = value;
+                var result;
+                if (sort == "balance" || sort == "sent") {
+                    var column_1 = sort === "balance" ? "Balance" : "Sent";
+                    var columnBN_1 = column_1 + "BigNumber";
+                    var div_1 = new BigNumber("1000000000000000000");
+                    result = items.filter(function (i) { return i.values.Redditor != null && i.values.Avatar != null; }).map(function (i) {
+                        if (!i.values[columnBN_1])
+                            i.values[columnBN_1] = (new BigNumber(i.values[column_1])).div(div_1);
+                        return i;
+                    }).filter(function (i) { return i.values[columnBN_1].greaterThan(0); }).sort(function (a, b) {
+                        return a.values[columnBN_1].greaterThan(b.values[columnBN_1]) ? -1 : 1;
+                    });
+                    var previous_1 = null;
+                    result.forEach(function (i) {
+                        var value = i.values[columnBN_1];
+                        if (previous_1 == null || value.lessThan(previous_1)) {
+                            index++;
+                            previous_1 = value;
+                        }
+                        i.values.Rank = index;
+                    });
+                }
+                else {
+                    var column_2;
+                    switch (sort) {
+                        case "in": {
+                            column_2 = "TxsIn";
+                            break;
+                        }
+                        case "out": {
+                            column_2 = "TxsOut";
+                            break;
+                        }
                     }
-                    i.id = index;
-                });
+                    var previous_2;
+                    result = items.filter(function (i) { return i.values[column_2] > 0; }).map(function (i) {
+                        var value = i.values[column_2];
+                        if (previous_2 == null || value < previous_2) {
+                            index++;
+                            previous_2 = value;
+                        }
+                        i.values.Rank = index;
+                        return i;
+                    });
+                }
                 return result;
+            };
+            LeaderBoard.prototype._select = function (e) {
+                this.selectedAccount = e.model.account;
+            };
+            LeaderBoard.prototype._closeSelectedAccount = function () {
+                this.selectedAccount = null;
+            };
+            LeaderBoard.prototype._computeHasSelectedAccount = function (selectedAccount) {
+                return selectedAccount != null;
             };
             LeaderBoard.prototype._address = function (account) {
                 return "https://blockexplorer.mainnet.v1.omg.network/address/" + account.values.Address + "?section=transactions";
@@ -52,33 +110,20 @@ var RockStats;
             LeaderBoard.prototype._flairs = function (flairs) {
                 if (flairs == null)
                     return [];
-                return flairs.split(":").filter(function (f) { return f != null && f.length > 0; }).map(function (f) {
-                    switch (f) {
-                        case "rock":
-                            return "https://emoji.redditmedia.com/l9rufetdlxd51_t5_m3idt/rock";
-                        case "salamander":
-                            return "https://emoji.redditmedia.com/b517pvmtlxd51_t5_m3idt/salamander";
-                        case "soon":
-                            return "https://emoji.redditmedia.com/g4dm01b3mxd51_t5_m3idt/soon";
-                        case "omg":
-                            return "https://emoji.redditmedia.com/htvyq0opp6d51_t5_m3idt/omg";
-                        case "wve":
-                            return "https://emoji.redditmedia.com/2pl9xkmspnk51_t5_m3idt/wve";
-                        case "snl":
-                            return "https://emoji.redditmedia.com/88nfcm4xpnk51_t5_m3idt/snl";
-                        case "skb":
-                            return "https://emoji.redditmedia.com/at87t5aopnk51_t5_m3idt/skb";
-                        default:
-                            return null;
-                    }
-                }).filter(function (f) { return !!f; });
+                return flairs.split(":").filter(function (f) { return f != null && f.length > 0; }).map(function (f) { var _a; return (_a = WebComponents.flairs_map[f]) !== null && _a !== void 0 ? _a : null; }).filter(function (f) { return !!f; });
             };
             LeaderBoard.prototype._avatar = function (account) {
                 var _a;
                 return (_a = account.values.Avatar) === null || _a === void 0 ? void 0 : _a.split("?")[0];
             };
-            LeaderBoard.prototype._balance = function (account, sort) {
-                var n = account.values[sort === "balance" ? "Balance" : "Sent"];
+            LeaderBoard.prototype._value = function (account, sort) {
+                if (sort !== "balance" && sort !== "sent") {
+                    if (sort == "in")
+                        return account.values.TxsIn;
+                    else if (sort == "out")
+                        return account.values.TxsOut;
+                }
+                var n = account.values[(sort === "balance" ? "Balance" : "Sent") + "BigNumber"];
                 if (n.lessThan(10000))
                     return n.round(2);
                 else if (n.lessThan(1000000))
@@ -104,7 +149,24 @@ var RockStats;
                             case 0:
                                 if (!this.accounts || this.isBusy)
                                     return [2];
-                                columnName = sort === "balance" ? "Balance" : "Sent";
+                                switch (sort) {
+                                    case "balance": {
+                                        columnName = "Balance";
+                                        break;
+                                    }
+                                    case "sent": {
+                                        columnName = "Sent";
+                                        break;
+                                    }
+                                    case "in": {
+                                        columnName = "TxsIn";
+                                        break;
+                                    }
+                                    case "out": {
+                                        columnName = "TxsOut";
+                                        break;
+                                    }
+                                }
                                 this.accounts.getColumn(columnName).sort(Vidyano.SortDirection.Descending);
                                 _a.label = 1;
                             case 1:
@@ -132,6 +194,10 @@ var RockStats;
                             type: Object,
                             readOnly: true
                         },
+                        items: {
+                            type: Array,
+                            computed: "_items(accounts.items, sort)"
+                        },
                         sort: {
                             type: String,
                             readOnly: true,
@@ -142,6 +208,15 @@ var RockStats;
                             type: Boolean,
                             readOnly: true,
                             value: true
+                        },
+                        selectedAccount: {
+                            type: Object,
+                            value: null
+                        },
+                        hasSelectedAccount: {
+                            type: Boolean,
+                            computed: "_computeHasSelectedAccount(selectedAccount)",
+                            reflectToAttribute: true
                         }
                     },
                     forwardObservers: [
