@@ -1,0 +1,97 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    --rockstats-wrapper-width: 1000px;
+
+    header {
+        line-height: 60px;
+        height: 60px;
+        background-color: #24292e;
+        padding: 0 12px;
+
+        h1 {
+            font-size: 22px;
+            line-height: 60px;
+            margin: 0;
+            color: white;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        img {
+            height: 60px;
+        }
+
+        nav {
+            line-height: 60px;
+
+            button {
+                display: flex;
+                color: white;
+                padding: 0;
+                margin: 0 1vw;
+
+                span {
+                    display: block;
+                    align-self: flex-end;
+                    line-height: 50px;
+                    font-size: 20px;
+                    box-sizing: border-box;
+                    padding: 0 12px;
+                    letter-spacing: 0.2px;
+                    font-weight: 600;
+                    border-top: 5px solid transparent;
+                    border-bottom: 5px solid transparent;
+                }
+
+                &[active] span {
+                    color: var(--theme-color);
+                    border-bottom: 5px solid var(--theme-color);
+                }
+            }
+        }
+    }
+
+    vi-app-route-presenter {
+        background: linear-gradient(180deg, #e1e8ee 112px, #eff4f7 100%);
+    }
+}
+
+:host-context([is-tablet]) {
+    header {
+        h1 {
+            font-size: 16px !important;
+        }
+
+        nav {
+            position: relative;
+
+            button {
+                span {
+                    padding: 0 6px;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
+:host-context([is-phone]) {
+    header {
+        h1, img {
+            display: none !important;
+        }
+
+        nav {
+            button {
+                align-self: flex-end;
+                flex: 1;
+                margin: 0;
+
+                span {
+                    flex: 1;
+                }
+            }
+        }
+    }
+}

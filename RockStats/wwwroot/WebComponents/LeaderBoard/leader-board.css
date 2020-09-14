@@ -27,85 +27,87 @@ SOFTWARE.
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  background: linear-gradient(180deg, #FFFFFF 112px, #EFF1FF 100%);
   position: relative;
   font-size: 24px;
-  --leader-board-row-height: 48px;
+  --leader-board-row-height: 90px;
 }
 
-:host main {
-  min-height: 30vh;
+:host header {
+  background-color: #f1f4f8;
+}
+
+:host header .sort {
+  line-height: 32px;
+  padding-left: 26px;
+  padding-right: 12px;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+:host header .sort svg {
+  fill: #333;
+  width: 32px;
+  height: 32px;
+}
+
+:host header .sort .button {
+  font-size: 16px;
+  margin-left: 20px;
+  line-height: 50px;
+  color: #444;
+  cursor: pointer;
+  padding: 0 6px;
+}
+
+:host header .sort .button[active] {
+  color: var(--theme-color);
+}
+
+:host header .sort .button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+:host header .search vi-input-search {
+  line-height: 24px;
+  padding: 6px 0;
+  max-width: 300px;
+  --vi-input-search-placeholder-color: #B3B3B3;
+  --vi-input-search: {
+                    -webkit-box-sizing: border-box;
+                            box-sizing: border-box;
+                };
+  --vi-input-search-input: {
+                    -webkit-box-sizing: border-box;
+                            box-sizing: border-box;
+                    border-width: 1px;
+                    border-style: solid;
+                    border-color: transparent;
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    padding-left: calc(var(--theme-h1) - var(--theme-h2));
+                    color: #333;
+                };
+  --vi-input-search-button: {
+                    fill: #B3B3B3;
+                };
+  --vi-input-search-input-focused: {
+                    background-color: white;
+                    border-right-color: #EAEAEA;
+                    border-top-color: #EAEAEA;
+                    border-bottom-color: #EAEAEA;
+                    border-left-color: #EAEAEA;
+                };
 }
 
 :host .wrapper {
   width: 1000px;
-  max-width: calc(100vw - 24px);
+  max-width: 100vw;
   margin: 0 auto;
-  overflow: hidden;
-}
-
-:host .wrapper.shadow {
-  -webkit-box-shadow: 0px 6px 12px 2px rgba(0, 0, 0, 0.25);
-          box-shadow: 0px 6px 12px 2px rgba(0, 0, 0, 0.25);
-}
-
-:host .test {
-  margin-top: 50px;
-  overflow: hidden;
-}
-
-:host header, :host .top {
-  height: 112px;
-  background-color: white;
-}
-
-:host .top {
-  position: fixed;
-  left: 0;
-  right: 0;
-  background-color: white;
-  pointer-events: none;
-}
-
-:host header {
-  position: relative;
-  z-index: 5;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding-top: 12px 12px 0 12px;
-}
-
-:host header h1 {
-  font-size: 100%;
-  margin: 0;
-  line-height: 60px;
-  color: #e43e01;
-}
-
-:host header img {
-  height: 60px;
-}
-
-:host header .sort div {
-  color: #ccc;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 80%;
-}
-
-:host header .sort div[active] {
-  color: #444;
-}
-
-:host header .sort div:not(:first-of-type) {
-  margin-left: 12px;
 }
 
 :host main {
   position: relative;
-  padding-top: 112px;
+  padding-top: 12px;
   min-height: 50vh;
 }
 
@@ -116,35 +118,119 @@ SOFTWARE.
 }
 
 :host main .account-wrapper {
-  padding: 12px 6px;
-  cursor: pointer;
+  padding: 20px 6px 10px 6px;
   text-decoration: none !important;
   color: #333 !important;
 }
 
-:host main .account-wrapper:hover {
-  background-color: #EFF1FF;
-}
-
 :host main .account {
-  line-height: var(--leader-board-row-height);
+  position: relative;
+  border-radius: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
 }
 
-:host main .account .rank {
+:host main .account:before, :host main .account:after {
+  z-index: -1;
+  position: absolute;
+  content: "";
+  bottom: 15px;
+  left: 10px;
+  width: 50%;
+  top: 80%;
+  max-width: 300px;
+  background: transparent;
+  -webkit-box-shadow: 0 15px 10px #777;
+          box-shadow: 0 15px 10px #777;
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+}
+
+:host main .account:after {
+  -webkit-transform: rotate(3deg);
+          transform: rotate(3deg);
+  right: 10px;
+  left: auto;
+}
+
+:host main .account:before {
+  left: 30px;
+}
+
+:host main .account .left, :host main .account .right {
+  background-color: white;
+}
+
+:host main .account .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 50% 0 0 50%;
+  border: 1px solid #d6dce0;
+  border-right-width: 0;
+}
+
+:host main .account .left img {
+  width: calc(var(--leader-board-row-height) - 2 * 4px);
+  height: calc(var(--leader-board-row-height) - 2 * 4px);
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid white;
+}
+
+:host main .account .right {
+  border: 1px solid #d6dce0;
+  border-left-width: 0;
+}
+
+:host main .account .rank-wrapper {
+  padding: 0 20px;
+}
+
+:host main .account .rank-wrapper .rank {
   width: 64px;
+  text-align: center;
+  font-weight: bold;
+}
+
+:host main .account .rank-wrapper .medal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+:host main .account .rank-wrapper .medal svg {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  width: 48px;
+  height: 48px;
+}
+
+:host main .account .rank-wrapper .medal:not([hidden]) {
+  width: 64px;
+  height: 48px;
   text-align: center;
 }
 
-:host main .account img.avatar {
-  margin-left: 12px;
-  width: var(--leader-board-row-height);
-  height: var(--leader-board-row-height);
-  -o-object-fit: cover;
-     object-fit: cover;
+:host main .account .rank-wrapper .medal:not([hidden])[rank="1"] #circle {
+  fill: #e6c300;
+}
+
+:host main .account .rank-wrapper .medal:not([hidden])[rank="2"] #circle {
+  fill: #C0C0C0;
+}
+
+:host main .account .rank-wrapper .medal:not([hidden])[rank="3"] #circle {
+  fill: #CD7F32;
 }
 
 :host main .account .who {
-  padding: 0 20px;
+  padding: 0 12px 0 4px;
 }
 
 :host main .account .who span {
@@ -153,44 +239,22 @@ SOFTWARE.
   overflow: hidden;
 }
 
-:host main .account .who h2 {
-  margin: 0;
-  font-size: 24px;
-  font-weight: normal;
-}
-
-:host main .account .flairs {
-  margin-left: 8px;
+:host main .account .who span.match {
+  background-color: yellow;
 }
 
 :host main .account .flairs img {
-  width: 25px;
-  height: 25px;
-  margin-bottom: 8px;
-  margin-right: 2px;
+  width: 32px;
+  height: 32px;
+  margin-right: 4px;
 }
 
-:host main .account .medal svg {
-  width: 48px;
-  height: 48px;
-}
-
-:host main .account .medal:not([hidden]) {
-  width: 64px;
-  height: 48px;
-  text-align: center;
-}
-
-:host main .account .medal:not([hidden])[rank="1"] #circle {
-  fill: #e6c300;
-}
-
-:host main .account .medal:not([hidden])[rank="2"] #circle {
-  fill: #C0C0C0;
-}
-
-:host main .account .medal:not([hidden])[rank="3"] #circle {
-  fill: #CD7F32;
+:host main .account .value {
+  padding: 0 20px;
+  width: 100px;
+  background-color: #f8fafc;
+  font-weight: 700;
+  color: #525252;
 }
 
 :host footer {
@@ -249,48 +313,146 @@ SOFTWARE.
 }
 
 :host-context([is-tablet]) {
-  font-size: 22px;
+  font-size: 18px;
+  --leader-board-row-height: 64px;
+}
+
+:host-context([is-tablet]) header .sort {
+  padding-left: 12px;
+  padding-right: 0;
+}
+
+:host-context([is-tablet]) header .sort .button {
+  font-size: 14px;
+  margin-left: 6px;
+}
+
+:host-context([is-tablet]) header .sort svg {
+  width: 24px;
+  height: 24px;
+}
+
+:host-context([is-tablet]) header vi-input-search {
+  margin-left: 6px;
+}
+
+:host-context([is-tablet]) main .account-wrapper {
+  padding: 16px 6px 6px 6px;
+}
+
+:host-context([is-tablet]) main .account .flairs img {
+  width: 24px;
+  height: 24px;
+}
+
+:host-context([is-tablet]) main .account .value {
+  width: 70px;
+  padding: 0 12px;
+}
+
+:host-context([is-tablet]) main .account .rank {
+  width: 32px !important;
+}
+
+:host-context([is-tablet]) main .account .medal {
+  width: 32px !important;
+}
+
+:host-context([is-tablet]) main .account .medal svg {
+  width: 32px !important;
+  height: 32px !important;
 }
 
 :host-context([is-phone]) {
   font-size: 16px;
+  --leader-board-row-height: 64px;
 }
 
-:host-context([is-phone]) .who {
-  display: block;
-  line-height: 26px;
+:host-context([is-phone]) header .sort {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding-left: 12px;
+  padding-right: 6px;
 }
 
-:host-context([is-phone]) .who span {
-  display: block;
-  font-size: 100%;
-}
-
-:host-context([is-phone]) .who .flairs {
+:host-context([is-phone]) header .sort .button {
+  font-size: 14px;
   margin-left: 0;
 }
 
-:host-context([is-phone]) .who img {
-  display: inline-block;
-  margin-bottom: 0 !important;
+:host-context([is-phone]) header .sort svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
 }
 
-:host-context([is-phone]) .value {
-  font-size: 100%;
-  line-height: 26px;
+:host-context([is-phone]) header .wrapper {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-:host-context([is-phone]) .rank {
-  width: 36px !important;
+:host-context([is-phone]) header .wrapper .sort {
+  width: 100vw;
 }
 
-:host-context([is-phone]) .medal {
-  width: 36px !important;
+:host-context([is-phone]) header .wrapper .sort > div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  min-height: 0;
+  min-width: 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-:host-context([is-phone]) .medal svg {
-  width: 36px !important;
-  height: 36px !important;
+:host-context([is-phone]) header .wrapper .search {
+  -webkit-box-flex: initial;
+      -ms-flex: initial;
+          flex: initial;
+  width: 100vw;
+  height: 52px;
+}
+
+:host-context([is-phone]) header .wrapper .search vi-input-search {
+  width: calc(100vw - 12px);
+  padding: 6px;
+  max-width: initial;
+}
+
+:host-context([is-phone]) main iron-list {
+  margin: 0 6px;
+}
+
+:host-context([is-phone]) main .account-wrapper {
+  padding: 8px 0 6px 0;
+}
+
+:host-context([is-phone]) main .account .flairs img {
+  width: 20px;
+  height: 20px;
+}
+
+:host-context([is-phone]) main .account .value {
+  width: 60px;
+  padding: 0 12px;
+}
+
+:host-context([is-phone]) main .account .rank-wrapper {
+  padding: 0 8px;
+}
+
+:host-context([is-phone]) main .account .rank {
+  width: 32px !important;
+}
+
+:host-context([is-phone]) main .account .medal {
+  width: 32px !important;
+}
+
+:host-context([is-phone]) main .account .medal svg {
+  width: 32px !important;
+  height: 32px !important;
 }
 
 :host-context([is-phone]) footer {

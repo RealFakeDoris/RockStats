@@ -5,9 +5,9 @@ var RockStats;
     (function (WebComponents) {
         WebComponents.metadata_map = {
             "0x00000000000000000000000000000000000000000000666c6169725f726f636b": "rock",
-            "0x0000000000000000000000000000000000666c6169725f736f6f6e616c697361": "salamander",
+            "0x0000000000000000000000000000000000666c6169725f736f6f6e616c697361": "snl",
             "0x00000000000000000000000000000000666c6169725f73616c616d616e646572": "salamander",
-            "0x00000000000000000000000000000000000000000000666c6169725f736f6f6e": "snl",
+            "0x00000000000000000000000000000000000000000000666c6169725f736f6f6e": "soon",
             "0x00000000000000000000000000000000000000000000666c6169725f77617665": "wve",
             "0x000000000000000000000000000000000000000000666c6169725f736b617465": "skb"
         };
@@ -85,7 +85,7 @@ var RockStats;
                 return WebComponents.flairs_map[flair];
             };
             AccountDetails.prototype._type = function (transaction) {
-                if (transaction.values.Receiver === "0x000000000000000000000000000000000000dead") {
+                if (transaction.values.Receiver === WebComponents.Dead) {
                     if (WebComponents.metadata_map[transaction.values.Metadata] != null)
                         return "Flair";
                     else
@@ -97,7 +97,7 @@ var RockStats;
                     return "In";
             };
             AccountDetails.prototype._isType = function (transaction, type) {
-                if (transaction.values.Receiver === "0x000000000000000000000000000000000000dead") {
+                if (transaction.values.Receiver === WebComponents.Dead) {
                     if (type === "flair")
                         return true;
                     else

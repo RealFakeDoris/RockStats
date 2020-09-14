@@ -53,9 +53,19 @@ namespace RockStats.Service
         public string Sender { get; set; }
 
         /// <summary>
+        /// The Reddit sender avatar url.
+        /// </summary>
+        public string SenderAvatar { get; set; }
+
+        /// <summary>
         /// The Reddit user that received the transaction.
         /// </summary>
         public string Receiver { get; set; }
+
+        /// <summary>
+        /// The Reddit receiver avatar url.
+        /// </summary>
+        public string ReceiverAvatar { get; set; }
 
         /// <summary>
         /// The amount of ROCK tokens sent in this transaction.
@@ -81,7 +91,9 @@ namespace RockStats.Service
                     Timestamp = (long)tx.Timestamp.Subtract(new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds,
                     Hash = tx.Hash,
                     Sender = sender != null ? sender.Owner : "0x" + tx.Sender.Split(new[] { '/' }, 2)[1],
+                    SenderAvatar = sender != null ? sender.Avatar : "",
                     Receiver = receiver != null ? receiver.Owner : "0x" + tx.Receiver.Split(new[] { '/' }, 2)[1],
+                    ReceiverAvatar = receiver != null ? receiver.Avatar : "",
                     Amount = tx.Amount,
                     Metadata = tx.Metadata
                 };

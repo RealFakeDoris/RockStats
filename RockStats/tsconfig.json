@@ -17,7 +17,9 @@
     "compileOnSave": true,
     "files": [
       "Scripts/typings/vidyano/vidyano.d.ts",
+      "wwwroot/WebComponents/AccountDetails/account-details.ts",
       "wwwroot/WebComponents/LeaderBoard/leader-board.ts",
-      "wwwroot/WebComponents/AccountDetails/account-details.ts"
+      "wwwroot/WebComponents/Transactions/transactions.ts",
+      "wwwroot/WebComponents/Wrapper/wrapper.ts"
     ]
   }

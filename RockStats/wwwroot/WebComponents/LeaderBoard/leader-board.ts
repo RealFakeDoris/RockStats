@@ -61,6 +61,11 @@ namespace RockStats.WebComponents {
                 type: Boolean,
                 computed: "_computeHasSelectedAccount(selectedAccount)",
                 reflectToAttribute: true
+            },
+            search: {
+                type: String,
+                notify: true,
+                value: ""
             }
         },
         forwardObservers: [
@@ -85,6 +90,10 @@ namespace RockStats.WebComponents {
             list.fire("iron-resize");
 
             this._setIsBusy(false);
+        }
+
+        private _sizeChanged() {
+            (<any>Polymer.dom(this.root).querySelector("#list")).fire("iron-resize");
         }
 
         private _items(items: Vidyano.QueryResultItem[], sort: string) {
@@ -150,6 +159,15 @@ namespace RockStats.WebComponents {
             }
 
             return result;
+        }
+
+        private _filteredItems(items: Vidyano.QueryResultItem[], search: string) {
+            if (search) {
+                search = search.toLowerCase();
+                items = items.filter(i => i.values.Redditor != null && i.values.Redditor.toLowerCase().contains(search));
+            }
+
+            return items;
         }
         
         private _select(e: TapEvent) {

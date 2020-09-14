@@ -1,0 +1,57 @@
+<!--
+Copyright (c) 2020 - 0xCD7F82BcFa333B4072A11Bd0B1da95c9b5f9E869 m/44'/60'/0'/0/0
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+ -->
+
+ <dom-module id="rockstats-transactions">
+    <template>
+        <link rel="stylesheet" href="transactions.css" />
+        <vi-spinner hidden$="[[!isBusy]]"></vi-spinner>
+        <vi-size-tracker on-sizechanged="_sizeChanged"></vi-size-tracker>
+        <vi-scroller class="flex" no-horizontal>
+            <main class="wrapper">
+                <iron-list id="list" items="[[items]]" as="tx">
+                    <template>
+                        <div class="transaction-wrapper">
+                            <a class="transaction relative" href="[[_transactionHref(tx)]]" target="_blank" type$="[[_type(tx)]]" load-more="[[tx.loadMore]]">
+                                <div class="info">
+                                    <div class="sender flex">
+                                        <img src$="[[_avatar(tx, 'SenderAvatar')]]">
+                                        <div class="who">[[_who(tx, 'Sender')]]</div>
+                                    </div>
+                                    <div class="amount">
+                                        <span>[[_amount(tx)]]</span>
+                                    </div>
+                                    <div class="receiver flex">
+                                        <img src$="[[_avatar(tx, 'ReceiverAvatar')]]">
+                                        <div class="who">[[_who(tx, 'Receiver')]]</div>
+                                    </div>
+                                </div>
+                                <div class="when">[[_when(tx)]]</div>
+                            </a>
+                        </div>
+                    </template>
+                </iron-list>
+            </main>
+        </vi-scroller>
+    </template>
+</dom-module>
+
+<script src="transactions.js"></script>

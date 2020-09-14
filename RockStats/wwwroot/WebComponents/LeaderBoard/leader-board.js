@@ -40,6 +40,9 @@ var RockStats;
                     });
                 });
             };
+            LeaderBoard.prototype._sizeChanged = function () {
+                Polymer.dom(this.root).querySelector("#list").fire("iron-resize");
+            };
             LeaderBoard.prototype._items = function (items, sort) {
                 if (items == null)
                     return [];
@@ -94,6 +97,13 @@ var RockStats;
                     });
                 }
                 return result;
+            };
+            LeaderBoard.prototype._filteredItems = function (items, search) {
+                if (search) {
+                    search = search.toLowerCase();
+                    items = items.filter(function (i) { return i.values.Redditor != null && i.values.Redditor.toLowerCase().contains(search); });
+                }
+                return items;
             };
             LeaderBoard.prototype._select = function (e) {
                 this.selectedAccount = e.model.account;
@@ -217,6 +227,11 @@ var RockStats;
                             type: Boolean,
                             computed: "_computeHasSelectedAccount(selectedAccount)",
                             reflectToAttribute: true
+                        },
+                        search: {
+                            type: String,
+                            notify: true,
+                            value: ""
                         }
                     },
                     forwardObservers: [

@@ -1436,12 +1436,52 @@
               }
             },
             {
+              "$id": "PersistentObjectAttribute:751c0e95-9c9c-30ca-a609-a9f11934f068",
+              "Id": "751c0e95-9c9c-30ca-a609-a9f11934f068",
+              "Offset": 70,
+              "Name": "ReceiverAvatar",
+              "Label": {
+                "en": "Receiver avatar"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:27065bb5-b57c-4f04-bd57-ad4a2bfe0f05"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:14fde888-b428-43ed-8119-997509b7490b"
+              }
+            },
+            {
               "$id": "PersistentObjectAttribute:704b525e-409e-3cd8-8dd6-31e0d1ce75a3",
               "Id": "704b525e-409e-3cd8-8dd6-31e0d1ce75a3",
               "Offset": 10,
               "Name": "Sender",
               "Label": {
                 "en": "Sender"
+              },
+              "Visibility": 7,
+              "ColumnSpan": 1,
+              "DataType": {
+                "$ref": "DataType:String"
+              },
+              "Group": {
+                "$ref": "PersistentObjectAttributeGroup:27065bb5-b57c-4f04-bd57-ad4a2bfe0f05"
+              },
+              "Tab": {
+                "$ref": "PersistentObjectAttributeTab:14fde888-b428-43ed-8119-997509b7490b"
+              }
+            },
+            {
+              "$id": "PersistentObjectAttribute:1e444579-fe4a-3db7-bc55-c9e084bce8c7",
+              "Id": "1e444579-fe4a-3db7-bc55-c9e084bce8c7",
+              "Offset": 60,
+              "Name": "SenderAvatar",
+              "Label": {
+                "en": "Sender avatar"
               },
               "Visibility": 7,
               "ColumnSpan": 1,
@@ -1687,6 +1727,6 @@
   ],
   "Reports": [],
   "ServiceVersion": "6.0.20200904.2322-beta1+66ab177",
-  "ModelHash": "XdKS2M2hQ9FiKDr0+ZWiQ/enOT+bYdpukD7yA+/8Y0w=",
+  "ModelHash": "FJ3NMyP1qijW2n4b9YBDFuExoliAECSukMU2jkDdmes=",
   "SeederHash": "bxZZYsn6O5PkrsGefSeAJvor4/BmrKsVELbZ/J0MQrY="
 }

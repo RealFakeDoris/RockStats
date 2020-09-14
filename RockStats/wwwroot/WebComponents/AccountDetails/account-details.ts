@@ -23,9 +23,9 @@ SOFTWARE.
 namespace RockStats.WebComponents {
     export const metadata_map = {
         "0x00000000000000000000000000000000000000000000666c6169725f726f636b": "rock",
-        "0x0000000000000000000000000000000000666c6169725f736f6f6e616c697361": "salamander",
+        "0x0000000000000000000000000000000000666c6169725f736f6f6e616c697361": "snl",
         "0x00000000000000000000000000000000666c6169725f73616c616d616e646572": "salamander",
-        "0x00000000000000000000000000000000000000000000666c6169725f736f6f6e": "snl",
+        "0x00000000000000000000000000000000000000000000666c6169725f736f6f6e": "soon",
         "0x00000000000000000000000000000000000000000000666c6169725f77617665": "wve",
         "0x000000000000000000000000000000000000000000666c6169725f736b617465": "skb"
     };
@@ -114,7 +114,7 @@ namespace RockStats.WebComponents {
         }
 
         private _type(transaction: Vidyano.QueryResultItem) {
-            if (transaction.values.Receiver === "0x000000000000000000000000000000000000dead") {
+            if (transaction.values.Receiver === Dead) {
                 if (metadata_map[transaction.values.Metadata] != null)
                     return "Flair";
                 else
@@ -127,7 +127,7 @@ namespace RockStats.WebComponents {
         }
 
         private _isType(transaction: Vidyano.QueryResultItem, type: string) {
-            if (transaction.values.Receiver === "0x000000000000000000000000000000000000dead") {
+            if (transaction.values.Receiver === Dead) {
                 if (type === "flair")
                     return true;
                 else

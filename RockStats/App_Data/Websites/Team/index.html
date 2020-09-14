@@ -6,29 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OMG Network Rocks!</title>
     <script src="web2/Libs/webcomponentsjs/webcomponents-lite.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800" rel="stylesheet" type="text/css">
     <link rel="import" href="web2/vidyano.html" />
+    <link rel="import" href="../web2/vulcanize/WebComponents/Wrapper/wrapper.html" />
     <link rel="import" href="../web2/vulcanize/WebComponents/LeaderBoard/leader-board.html" />
+    <link rel="import" href="../web2/vulcanize/WebComponents/Transactions/transactions.html" />
     <link rel="import" href="../web2/vulcanize/WebComponents/AccountDetails/account-details.html" />
     <style>
-        html, body {
+        html, body, vi-app {
             height: 100%;
             width: 100%;
             padding: 0;
             margin: 0;
         }
-
-        vi-app {
-            font-family: 'Martel Sans', sans-serif;
-        }
     </style>
 </head>
 <body>
-    <vi-app>
+    <vi-app theme-color="#FF5722" class="relative">
         <template is="dom-template">
-            <vi-app-route-presenter>
-                <vi-app-route route="" component="RockStats.WebComponents.LeaderBoard" preserve-content></vi-app-route>
-            </vi-app-route-presenter>
+            <rockstats-wrapper class="fit"></rockstats-wrapper>
         </template>
     </vi-app>
 </body>

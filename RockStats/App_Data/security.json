@@ -16,7 +16,7 @@
     },
     {
       "Id": "d7175e91-5b67-4eec-a306-104067215588",
-      "Resource": "QueryRead/RockStats.VTransaction",
+      "Resource": "Query/RockStats.VTransaction",
       "UserId": "85029f44-1c28-4ea9-8e95-8da943f7babf"
     },
     {
